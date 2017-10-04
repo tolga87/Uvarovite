@@ -33,18 +33,15 @@ class UVComicManager {
 
   private func fetchCurrentComic() {
     self.fetchComic(comicId: 0, comicCallback: { (comic: UVComic?, error: Error?) in
-      //
       if let comic = comic {
         self.currentComic = comic
         self.currentComicId = self.currentComic!.id
-        self.ready = true
-        NotificationCenter.default.post(name: UVComicManager.managerReadyNotification, object: self)
-        print("Comic manager ready!")
       } else {
         // TODO: process error
       }
     }) { (comic: UVComic, error: Error?) in
-      // nothing to do here
+      self.ready = true
+      NotificationCenter.default.post(name: UVComicManager.managerReadyNotification, object: self)
     }
   }
 
@@ -70,7 +67,9 @@ class UVComicManager {
         do {
           let jsonObject = try decoder.decode(UVComicJSONObject.self, from: data)
           let comic = UVComic(jsonObject: jsonObject)
-          comicCallback((comic, error))
+          DispatchQueue.main.async {
+            comicCallback((comic, error))
+          }
 
           if let comic = comic, let imageUrl = comic.imageUrl {
             let imageDownloadTask = URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
@@ -79,7 +78,9 @@ class UVComicManager {
                 comic.image = image
               }
               self.comicBuffer[comic.id] = comic
-              imageCallback((comic, error))
+              DispatchQueue.main.async {
+                imageCallback((comic, error))
+              }
             }
             imageDownloadTask.resume()
           }

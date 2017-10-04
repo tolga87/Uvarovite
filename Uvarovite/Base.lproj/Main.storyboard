@@ -17,25 +17,91 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nah-zm-B2X">
-                                <rect key="frame" x="168.5" y="39" width="37" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-sD-Onm" userLabel="HeaderView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="80"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="EtV-l6-z8W"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eus-bX-Twj" userLabel="BodyView">
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="600" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SLP-MR-9vH" customClass="UVComicTableView" customModule="Uvarovite" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="0.0" width="359" height="567"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicTableViewCell" rowHeight="200" id="Bsm-fK-KEf" customClass="UVComicTableViewCell" customModule="Uvarovite" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="359" height="200"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bsm-fK-KEf" id="MbI-UJ-IHj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="200"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3d9-Fq-6hd" userLabel="HeaderView">
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="40"/>
+                                                            <color key="backgroundColor" red="0.85530598960000004" green="1" blue="0.53317599829999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="XAY-wY-yMy"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-xf-Aje">
+                                                            <rect key="frame" x="0.0" y="40" width="359" height="160"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="3d9-Fq-6hd" firstAttribute="top" secondItem="MbI-UJ-IHj" secondAttribute="top" id="Pg8-Ls-F7N"/>
+                                                        <constraint firstAttribute="trailing" secondItem="JYq-xf-Aje" secondAttribute="trailing" id="Uor-uT-kAN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3d9-Fq-6hd" secondAttribute="trailing" id="Wf3-rj-XDG"/>
+                                                        <constraint firstItem="3d9-Fq-6hd" firstAttribute="leading" secondItem="MbI-UJ-IHj" secondAttribute="leading" id="XW5-2V-x8i"/>
+                                                        <constraint firstItem="JYq-xf-Aje" firstAttribute="leading" secondItem="MbI-UJ-IHj" secondAttribute="leading" id="gyM-Oe-0mR"/>
+                                                        <constraint firstItem="JYq-xf-Aje" firstAttribute="top" secondItem="3d9-Fq-6hd" secondAttribute="bottom" id="lgG-jS-PPh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="JYq-xf-Aje" secondAttribute="bottom" id="y2w-6g-kbQ"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="comicImageView" destination="JYq-xf-Aje" id="wYd-xG-fk9"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.5" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="SLP-MR-9vH" firstAttribute="top" secondItem="eus-bX-Twj" secondAttribute="top" id="1z3-cB-5di"/>
+                                    <constraint firstAttribute="bottom" secondItem="SLP-MR-9vH" secondAttribute="bottom" id="DFp-60-lYi"/>
+                                    <constraint firstItem="SLP-MR-9vH" firstAttribute="leading" secondItem="eus-bX-Twj" secondAttribute="leading" constant="8" id="P5z-R7-zuU"/>
+                                    <constraint firstAttribute="trailing" secondItem="SLP-MR-9vH" secondAttribute="trailing" constant="8" id="jjS-dD-yCp"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJj-cq-Enf">
+                                <rect key="frame" x="143" y="45" width="88" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="TEST"/>
                                 <connections>
-                                    <action selector="testButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="shv-67-Hf5"/>
+                                    <action selector="testTappedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTS-px-nWU"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Nah-zm-B2X" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LYd-pE-cfG"/>
-                            <constraint firstItem="Nah-zm-B2X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="19" id="zq4-ed-8Mc"/>
+                            <constraint firstItem="bnD-sD-Onm" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="3Sm-8T-aBO"/>
+                            <constraint firstItem="eus-bX-Twj" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="bottom" id="N6U-h4-0QE"/>
+                            <constraint firstItem="eus-bX-Twj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Wnk-ed-tS8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="bottom" constant="-80" id="Zj6-pz-ffZ"/>
+                            <constraint firstItem="eus-bX-Twj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bIk-Cs-ACn"/>
+                            <constraint firstItem="bnD-sD-Onm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cZN-9L-1cY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eus-bX-Twj" secondAttribute="bottom" id="p4Y-d9-2bg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="comicTableView" destination="SLP-MR-9vH" id="ESy-la-g7d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.5" y="133.5"/>
+            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>

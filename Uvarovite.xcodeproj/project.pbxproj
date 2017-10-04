@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
+		FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
+		FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
+		FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
+		FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
+		FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
 		FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24011F80437500BA1038 /* AppDelegate.swift */; };
 		FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24031F80437500BA1038 /* UVRootViewController.swift */; };
 		FD9A24071F80437500BA1038 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9A24051F80437500BA1038 /* Main.storyboard */; };
@@ -40,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
+		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
 		FD9A23FE1F80437500BA1038 /* Uvarovite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uvarovite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD9A24011F80437500BA1038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD9A24031F80437500BA1038 /* UVRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVRootViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD5CC67C1F8082B2006F4A27 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */,
+				FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		FD9A23F51F80437500BA1038 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				FD9A24051F80437500BA1038 /* Main.storyboard */,
+				FD5CC67C1F8082B2006F4A27 /* UI */,
 				FD9A242F1F80443700BA1038 /* Model */,
 				FD9A24011F80437500BA1038 /* AppDelegate.swift */,
 				FD9A24031F80437500BA1038 /* UVRootViewController.swift */,
@@ -278,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */,
+				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */,
 				FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */,
 				FD9A24311F80448B00BA1038 /* UVComic.swift in Sources */,
@@ -290,6 +310,8 @@
 			files = (
 				FD9A24321F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
+				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +322,8 @@
 			files = (
 				FD9A24331F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
+				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
