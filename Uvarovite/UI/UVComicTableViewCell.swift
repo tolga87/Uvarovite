@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 
 class UVComicTableViewCell : UITableViewCell {
-  @IBOutlet var titleLabel: UILabel?
+  @IBOutlet var titleLabel: UILabel!
+  @IBOutlet var dateLabel: UILabel!
   @IBOutlet var comicImageView: UIImageView?
   @IBOutlet var altTextLabel: UILabel?
 
@@ -24,14 +25,12 @@ class UVComicTableViewCell : UITableViewCell {
 
   override func prepareForReuse() {
     super.prepareForReuse()
+
+    self.titleLabel.text = ""
+    self.dateLabel.text = ""
     self.imageConstraint = nil
     self.comicImageView?.image = nil
   }
-
-//  override func didMoveToSuperview() {
-//    self.setNeedsLayout()
-//    self.layoutIfNeeded()
-//  }
 
   func setComicImage(_ image: UIImage?) {
     var heightWidthRatio: CGFloat = 0.5
