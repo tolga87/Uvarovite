@@ -70,7 +70,6 @@ class UVComicManager {
   private func fetchCurrentComic() {
     self.fetchComic(comicIndex:0, comicId: 0) { (comic: UVComic?, error: ComicError?) in
       if comic != nil {
-//        self.fetchComics(starting: 1, count: 9)
         self.fetchMoreComics(9)
       } else {
         // TODO: process error

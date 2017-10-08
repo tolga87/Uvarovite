@@ -21,23 +21,9 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-sD-Onm" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJj-cq-Enf" userLabel="Button">
-                                        <rect key="frame" x="143" y="25" width="88" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="88" id="RXF-je-Xvw"/>
-                                        </constraints>
-                                        <state key="normal" title="Load +10"/>
-                                        <connections>
-                                            <action selector="testTappedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dTS-px-nWU"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="fJj-cq-Enf" firstAttribute="centerX" secondItem="bnD-sD-Onm" secondAttribute="centerX" id="ChU-g2-kIY"/>
                                     <constraint firstAttribute="height" constant="80" id="EtV-l6-z8W"/>
-                                    <constraint firstItem="fJj-cq-Enf" firstAttribute="centerY" secondItem="bnD-sD-Onm" secondAttribute="centerY" id="QHF-cJ-y9x"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eus-bX-Twj" userLabel="BodyView">
@@ -46,6 +32,25 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="600" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SLP-MR-9vH" customClass="UVComicTableView" customModule="Uvarovite" customModuleProvider="target">
                                         <rect key="frame" x="8" y="0.0" width="359" height="567"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <view key="tableFooterView" contentMode="scaleToFill" id="Xuc-ej-DUZ" userLabel="LoadMoreView">
+                                            <rect key="frame" x="0.0" y="328" width="359" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑↑Drag up for more comics↑↑" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Std-V9-bv2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.72336632013320923" green="0.47564099809914834" blue="0.68728157794676148" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="Std-V9-bv2" firstAttribute="centerX" secondItem="Xuc-ej-DUZ" secondAttribute="centerX" id="Oou-6H-21E"/>
+                                                <constraint firstItem="Std-V9-bv2" firstAttribute="width" secondItem="Xuc-ej-DUZ" secondAttribute="width" id="RtX-Rg-Jdz"/>
+                                                <constraint firstItem="Std-V9-bv2" firstAttribute="height" secondItem="Xuc-ej-DUZ" secondAttribute="height" id="cwe-g4-Ykg"/>
+                                                <constraint firstItem="Std-V9-bv2" firstAttribute="centerY" secondItem="Xuc-ej-DUZ" secondAttribute="centerY" id="hJH-Lq-3mA"/>
+                                            </constraints>
+                                        </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicTableViewCell" rowHeight="300" id="Bsm-fK-KEf" customClass="UVComicTableViewCell" customModule="Uvarovite" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="359" height="300"/>
@@ -166,6 +171,8 @@
                     </view>
                     <connections>
                         <outlet property="comicTableView" destination="SLP-MR-9vH" id="ESy-la-g7d"/>
+                        <outlet property="comicTableViewFooter" destination="Xuc-ej-DUZ" id="JyC-LJ-BGA"/>
+                        <outlet property="loadMoreLabel" destination="Std-V9-bv2" id="81z-dS-sv0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

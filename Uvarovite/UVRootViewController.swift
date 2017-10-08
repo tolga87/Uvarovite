@@ -1,15 +1,20 @@
 import Foundation
 import UIKit
 
+enum UVComicTableViewLoadStatus {
+  case initial
+  case loading
+  case loaded
+}
+
 class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   @IBOutlet var comicTableView: UVComicTableView!
+  @IBOutlet var comicTableViewFooter: UIView!
+  @IBOutlet var loadMoreLabel: UILabel!
 
   var comicManager = UVComicManager.sharedInstance
+  var comicLoadStatus = UVComicTableViewLoadStatus.initial
   var dateFormatter: DateFormatter = DateFormatter()
-
-  @IBAction func testTapped(sender: UIButton) {
-    self.comicManager.fetchMoreComics(10)
-  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,8 +26,9 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     NotificationCenter.default.addObserver(forName: UVComicManager.comicsDidUpdateNotification,
                                            object: nil,
                                            queue: OperationQueue.main) { (notification: Notification) in
-                                              self.comicTableView.reloadData()
-
+                                            self.comicTableView.reloadData()
+                                            self.comicLoadStatus = .loaded
+                                            self.loadMoreLabel.text = ""
     }
   }
 
@@ -60,5 +66,34 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
                                                                  date: comic.date)
     cell.setComicImage(comic.image)
     return cell
+  }
+
+  func calculateFooterRevealPercentage() -> Double {
+    let bottomPoint = self.comicTableView.frame.size.height + self.comicTableView.contentOffset.y
+    let footerHeight = self.comicTableViewFooter.frame.size.height
+    return Double((bottomPoint - self.comicTableView.contentSize.height + footerHeight) / footerHeight)
+  }
+
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if self.comicLoadStatus != .loaded {
+      return
+    }
+
+    let percentage = self.calculateFooterRevealPercentage()
+    if percentage > 1 {
+      self.loadMoreLabel.text = String(format: "%.1f", percentage)
+    } else {
+      // \u{2191} is the up arrow symbol
+      self.loadMoreLabel.text = "\u{2191}\u{2191}Drag up for more comics\u{2191}\u{2191}"
+    }
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let percentage = self.calculateFooterRevealPercentage()
+    if percentage >= 1.0 && self.comicLoadStatus == .loaded {
+      self.comicLoadStatus = .loading
+      self.loadMoreLabel.text = "Loading..."
+      self.comicManager.fetchMoreComics(10)
+    }
   }
 }
