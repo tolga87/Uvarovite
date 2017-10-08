@@ -7,12 +7,10 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   var comicManager = UVComicManager.sharedInstance
   var dateFormatter: DateFormatter = DateFormatter()
 
-  internal var debug_reloaded = [false, false, false]
-  internal var debug_remaining = 3
-
   @IBAction func testTapped(sender: UIButton) {
     print("TEST")
-    self.comicTableView.reloadData()
+    self.comicManager.fetchMoreComics(10)
+//    self.comicTableView.reloadData()
   }
 
   override func viewDidLoad() {
@@ -22,79 +20,59 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
 
     self.dateFormatter.dateFormat = "yyyy-MM-dd"
 
-    NotificationCenter.default.addObserver(forName: UVComicManager.managerReadyNotification,
+    NotificationCenter.default.addObserver(forName: UVComicManager.comicsDidUpdateNotification,
                                            object: nil,
                                            queue: OperationQueue.main) { (notification: Notification) in
-                                            print("Comic Manager Ready!")
-                                            self.reloadDataWorkaround()
+//                                            if let userInfo = notification.userInfo {
+//                                              let newRange = userInfo[UVIntervalSet.intervalLengthChangedNotificationRangeKey] as! ClosedRange<Int>
+//                                              self.loadNewComics(range: newRange)
+//                                            } else {
+                                              self.comicTableView.reloadData()
+//                                            }
+
     }
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.reloadDataWorkaround()
-  }
-
-  internal func reloadDataWorkaround() {
-    // this looks really unnecessary, but after banging my head on
-    // the wall for a very long time, I'm 99% convinced that this
-    // layout issue is an Apple bug and applied this ugly workaround.
-    self.comicTableView.reloadData()
-  }
+//  func loadNewComics(range: ClosedRange<Int>) {
+//    var indexPaths = [IndexPath]()
+//    for row in range.lowerBound...range.upperBound {
+//      indexPaths.append(IndexPath(row: row, section: 0))
+//    }
+//
+//    self.comicTableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+////    self.comicTableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+//  }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if !self.comicManager.ready {
-      return 0
-    }
-    return 100
+//    return 0
+//    if !self.comicManager.ready {
+//      return 0
+//    }
+//    return 100
+
+    let numComics = self.comicManager.numComics()
+    return numComics
   }
 
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ComicTableViewCell", for: indexPath) as! UVComicTableViewCell
-    cell.comicId = self.comicManager.currentComicId! - indexPath.row
-    cell.titleLabel?.text = "Loading..."
-
-    self.comicManager.fetchComic(comicId: cell.comicId,
-                                 comicCallback:{ (comic: UVComic?, error: Error?) in
-                                  if let comic = comic {
-                                    if comic.id == cell.comicId {
-                                      cell.titleLabel.text = comic.title
-                                      var dateString = ""
-                                      if let date = comic.date {
-                                        dateString = self.dateFormatter.string(from: date)
-                                      }
-                                      cell.dateLabel.text = dateString
-                                    }
-                                  }
-    },
-                                 imageCallback:{ (comic: UVComic, error: Error?) in
-                                  if comic.id == cell.comicId {
-                                    print("Image downloaded for comic: \(cell.comicId)")
-                                    cell.setComicImage(comic.image)
-
-                                    if self.debug_remaining > 0 {
-
-                                      let index = indexPath.row
-                                      if index < self.debug_reloaded.count && !self.debug_reloaded[index] {
-                                        print("Reloading...")
-                                        self.comicTableView.reloadData()
-                                        self.debug_reloaded[index] = true
-                                        self.debug_remaining -= 1
-                                      }
-                                    }
-                                  }
-    })
-
+    let comic = self.comicManager.comicAt(indexPath.row)
+    cell.comicId = comic.id
+    cell.titleLabel.text = comic.title
+    if let date = comic.date {
+      cell.dateLabel.text = self.dateFormatter.string(from: date)
+    }
+    cell.setComicImage(comic.image)
     return cell
   }
 
-  private func loadingCell() -> UITableViewCell {
-    let indexPath = IndexPath(row: 0, section: 0)
-    let cell = self.comicTableView!.dequeueReusableCell(withIdentifier: "ComicTableViewCell",
-                                                        for: indexPath) as! UVComicTableViewCell
-    cell.titleLabel?.text = "Loading..."
-    cell.setComicImage(nil)
-    return cell
-  }
+//  private func loadingCell() -> UITableViewCell {
+//    let indexPath = IndexPath(row: 0, section: 0)
+//    let cell = self.comicTableView!.dequeueReusableCell(withIdentifier: "ComicTableViewCell",
+//                                                        for: indexPath) as! UVComicTableViewCell
+//    cell.titleLabel?.text = "Loading..."
+//    cell.setComicImage(nil)
+//    return cell
+//  }
 }

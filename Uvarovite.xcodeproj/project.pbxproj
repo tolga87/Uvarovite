@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FD2C4DF11F884FB800CE9203 /* placeholder-359x175.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */; };
+		FD2C4DF31F896D2100CE9203 /* UVIntervalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */; };
+		FD2C4DF41F896D2200CE9203 /* UVIntervalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */; };
+		FD2C4DF51F896D2200CE9203 /* UVIntervalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */; };
 		FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
@@ -48,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-359x175.png"; sourceTree = "<group>"; };
+		FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIntervalSet.swift; sourceTree = "<group>"; };
 		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
 		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
 		FD9A23FE1F80437500BA1038 /* Uvarovite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uvarovite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +172,7 @@
 			children = (
 				FD9A24301F80448B00BA1038 /* UVComic.swift */,
 				FD9A24341F8046E300BA1038 /* UVComicManager.swift */,
+				FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +316,7 @@
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */,
+				FD2C4DF31F896D2100CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */,
 				FD9A24311F80448B00BA1038 /* UVComic.swift in Sources */,
 			);
@@ -324,6 +330,7 @@
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
+				FD2C4DF41F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +343,7 @@
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
+				FD2C4DF51F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
