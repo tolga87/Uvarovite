@@ -90,6 +90,16 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-359x175.png" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-xf-Aje">
                                                             <rect key="frame" x="0.0" y="75" width="359" height="175"/>
                                                         </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alt text goes here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-Xo-Den" userLabel="AltTextLabel" customClass="UVLabel" customModule="Uvarovite" customModuleProvider="target">
+                                                            <rect key="frame" x="8" y="190" width="343" height="60"/>
+                                                            <color key="backgroundColor" red="0.87739550795046806" green="0.87739550795046806" blue="0.87739550795046806" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="60" id="bmz-wr-6fh"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEu-6h-bun" userLabel="FooterView">
                                                             <rect key="frame" x="0.0" y="250" width="359" height="50"/>
                                                             <subviews>
@@ -104,6 +114,9 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Url-04-9cJ">
                                                                     <rect key="frame" x="239" y="5" width="119.5" height="40"/>
                                                                     <state key="normal" title="Alt Text"/>
+                                                                    <connections>
+                                                                        <action selector="didTapShowAltTextWithSender:" destination="Bsm-fK-KEf" eventType="touchUpInside" id="yG5-f6-YPt"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.93461138308302216" green="0.82086192281095671" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -128,19 +141,23 @@
                                                     <constraints>
                                                         <constraint firstItem="fEu-6h-bun" firstAttribute="top" secondItem="JYq-xf-Aje" secondAttribute="bottom" id="905-zZ-6uG"/>
                                                         <constraint firstAttribute="trailing" secondItem="fEu-6h-bun" secondAttribute="trailing" id="947-6H-urJ"/>
+                                                        <constraint firstItem="fEu-6h-bun" firstAttribute="top" secondItem="0cv-Xo-Den" secondAttribute="bottom" id="99U-tY-aDT"/>
                                                         <constraint firstAttribute="bottom" secondItem="fEu-6h-bun" secondAttribute="bottom" id="Jaf-ce-Z2n"/>
                                                         <constraint firstItem="3d9-Fq-6hd" firstAttribute="top" secondItem="MbI-UJ-IHj" secondAttribute="top" id="Pg8-Ls-F7N"/>
                                                         <constraint firstItem="JYq-xf-Aje" firstAttribute="top" secondItem="YH9-j5-fuI" secondAttribute="bottom" id="RoP-Bz-R8J"/>
                                                         <constraint firstAttribute="trailing" secondItem="3d9-Fq-6hd" secondAttribute="trailing" id="Wf3-rj-XDG"/>
                                                         <constraint firstItem="3d9-Fq-6hd" firstAttribute="leading" secondItem="MbI-UJ-IHj" secondAttribute="leading" id="XW5-2V-x8i"/>
                                                         <constraint firstItem="fEu-6h-bun" firstAttribute="leading" secondItem="MbI-UJ-IHj" secondAttribute="leading" id="Ypf-NF-BpP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0cv-Xo-Den" secondAttribute="trailing" constant="8" id="ddK-XR-O85"/>
                                                         <constraint firstItem="JYq-xf-Aje" firstAttribute="leading" secondItem="MbI-UJ-IHj" secondAttribute="leading" id="gyM-Oe-0mR"/>
                                                         <constraint firstItem="JYq-xf-Aje" firstAttribute="top" secondItem="3d9-Fq-6hd" secondAttribute="bottom" id="lgG-jS-PPh"/>
                                                         <constraint firstAttribute="trailing" secondItem="JYq-xf-Aje" secondAttribute="trailing" id="rQs-JC-k1f"/>
+                                                        <constraint firstItem="0cv-Xo-Den" firstAttribute="leading" secondItem="MbI-UJ-IHj" secondAttribute="leading" constant="8" id="y6W-wu-GID"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <connections>
+                                                    <outlet property="altTextLabel" destination="0cv-Xo-Den" id="T5A-Z7-i6K"/>
                                                     <outlet property="comicImageView" destination="JYq-xf-Aje" id="wYd-xG-fk9"/>
                                                     <outlet property="infoLabel" destination="YH9-j5-fuI" id="N3Z-bx-c99"/>
                                                 </connections>

@@ -2,13 +2,15 @@ import Foundation
 import UIKit
 
 class UVComicTableViewCell : UITableViewCell {
-//  @IBOutlet var titleLabel: UILabel!
-//  @IBOutlet var dateLabel: UILabel!
   @IBOutlet var infoLabel: UILabel!
-  @IBOutlet var comicImageView: UIImageView?
-  @IBOutlet var altTextLabel: UILabel?
+  @IBOutlet var comicImageView: UIImageView!
+  @IBOutlet var altTextLabel: UVLabel!
 
+  var comicId: Int = -1
+  var comic: UVComic?
   var imageSize: CGSize?
+
+  static let animationDuration: TimeInterval = 0.75
 
   internal var imageConstraint: NSLayoutConstraint? {
     didSet {
@@ -21,15 +23,46 @@ class UVComicTableViewCell : UITableViewCell {
     }
   }
 
-  var comicId: Int = -1
-  var comic: UVComic?
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.altTextLabel.alpha = 0
+    self.altTextLabel.layer.cornerRadius = 4
+    self.altTextLabel.layer.masksToBounds = true
+
+    self.altTextLabel.edgeInsets = UIEdgeInsetsMake(1, 4, 1, 4)
+    self.altTextLabel.adjustsFontSizeToFitWidth = true
+    self.altTextLabel.minimumScaleFactor = 0.33
+  }
 
   override func prepareForReuse() {
     super.prepareForReuse()
 
     self.infoLabel.attributedText = nil
+    self.altTextLabel.alpha = 0
+    self.altTextLabel.text = nil
     self.imageConstraint = nil
     self.comicImageView?.image = nil
+  }
+
+  @IBAction func didTapShowAltText(sender: UIButton) {
+    self.showAltText()
+  }
+
+  func showAltText() {
+    UIView.animate(withDuration: UVComicTableViewCell.animationDuration) {
+      self.altTextLabel.alpha = 1
+    }
+
+    let delayTime = DispatchTime.now() + 10
+    DispatchQueue.main.asyncAfter(deadline: delayTime) {
+      self.hideAltText()
+    }
+  }
+
+  private func hideAltText() {
+    UIView.animate(withDuration: UVComicTableViewCell.animationDuration) {
+      self.altTextLabel.alpha = 0
+    }
   }
 
   func setComicImage(_ image: UIImage?) {

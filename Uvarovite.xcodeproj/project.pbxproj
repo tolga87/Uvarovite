@@ -17,6 +17,9 @@
 		FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
 		FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
 		FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
+		FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD96D9FE1F8AA27100317385 /* UVLabel.swift */; };
+		FD96DA001F8AA27100317385 /* UVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD96D9FE1F8AA27100317385 /* UVLabel.swift */; };
+		FD96DA011F8AA27100317385 /* UVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD96D9FE1F8AA27100317385 /* UVLabel.swift */; };
 		FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24011F80437500BA1038 /* AppDelegate.swift */; };
 		FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24031F80437500BA1038 /* UVRootViewController.swift */; };
 		FD9A24071F80437500BA1038 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD9A24051F80437500BA1038 /* Main.storyboard */; };
@@ -54,6 +57,7 @@
 		FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIntervalSet.swift; sourceTree = "<group>"; };
 		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
 		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
+		FD96D9FE1F8AA27100317385 /* UVLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVLabel.swift; sourceTree = "<group>"; };
 		FD9A23FE1F80437500BA1038 /* Uvarovite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uvarovite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD9A24011F80437500BA1038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD9A24031F80437500BA1038 /* UVRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVRootViewController.swift; sourceTree = "<group>"; };
@@ -107,10 +111,19 @@
 		FD5CC67C1F8082B2006F4A27 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FD96D9FD1F8AA26200317385 /* Common */,
 				FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */,
 				FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		FD96D9FD1F8AA26200317385 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FD96D9FE1F8AA27100317385 /* UVLabel.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		FD9A23F51F80437500BA1038 = {
@@ -315,6 +328,7 @@
 				FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
+				FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */,
 				FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */,
 				FD2C4DF31F896D2100CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */,
@@ -332,6 +346,7 @@
 				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD2C4DF41F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
+				FD96DA001F8AA27100317385 /* UVLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +360,7 @@
 				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD2C4DF51F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,
+				FD96DA011F8AA27100317385 /* UVLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,6 +64,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     cell.comicId = comic.id
     cell.infoLabel.attributedText = self.getAttributedStringWith(title: comic.title ?? "",
                                                                  date: comic.date)
+    cell.altTextLabel.text = comic.altText
     cell.setComicImage(comic.image)
     return cell
   }
