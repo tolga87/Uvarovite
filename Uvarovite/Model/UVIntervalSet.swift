@@ -1,4 +1,3 @@
-
 import Foundation
 
 struct UVInterval {
@@ -95,7 +94,7 @@ class UVIntervalSet {
   }
   }
 
-  func printIntervals() {
+  private func printIntervals() {
     var desc = "\t\tComic intervals:"
     let sortedStartPoints = Array(self.startPoints.keys).sorted()
     for startPoint in sortedStartPoints {
@@ -105,26 +104,4 @@ class UVIntervalSet {
     print(desc)
   }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//~TA
-
