@@ -8,20 +8,27 @@ enum UVComicTableViewLoadStatus {
 }
 
 class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+  @IBOutlet var headerView: UIView!
+  @IBOutlet var headerHeightConstraint: NSLayoutConstraint!
   @IBOutlet var comicTableView: UVComicTableView!
   @IBOutlet var comicTableViewFooter: UIView!
   @IBOutlet var loadMoreLabel: UILabel!
 
+  var headerMaxHeight: CGFloat = 0
   var comicManager = UVComicManager.sharedInstance
   var comicLoadStatus = UVComicTableViewLoadStatus.initial
   var dateFormatter: DateFormatter = DateFormatter()
 
+  private var dragBeginOffset: CGFloat = 0
+  private var headerHeightAtDragStart: CGFloat = 0
+
   override func viewDidLoad() {
     super.viewDidLoad()
+
     self.comicTableView.dataSource = self
     self.comicTableView.delegate = self
-
     self.dateFormatter.dateFormat = "yyyy-MM-dd"
+    self.headerMaxHeight = self.headerView.frame.size.height
 
     NotificationCenter.default.addObserver(forName: UVComicManager.comicsDidUpdateNotification,
                                            object: nil,
@@ -32,8 +39,12 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     }
   }
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.comicManager.numComics()
+  @IBAction func didTapScrollToTop(sender: UIButton) {
+    self.comicTableView.setContentOffset(CGPoint.zero, animated: true)
+  }
+
+  @IBAction func didTapSettings(sender: UIButton) {
+    print("Not implemented yet!")
   }
 
   private func getAttributedStringWith(title: String, date: Date?) -> NSAttributedString {
@@ -58,6 +69,10 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     return attributedString
   }
 
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return self.comicManager.numComics()
+  }
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ComicTableViewCell", for: indexPath) as! UVComicTableViewCell
     let comic = self.comicManager.comicAt(indexPath.row)
@@ -76,6 +91,15 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   }
 
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let scrollOffset = self.comicTableView.contentOffset.y
+    let dragAmount = scrollOffset - self.dragBeginOffset
+    func clamp(_ value: CGFloat, _ minValue: CGFloat, _ maxValue: CGFloat) -> CGFloat {
+      return min(maxValue, max(value, minValue))
+    }
+
+    let headerHeight = clamp(self.headerHeightAtDragStart - dragAmount, 0, self.headerMaxHeight)
+    self.headerHeightConstraint.constant = headerHeight
+
     if self.comicLoadStatus != .loaded {
       return
     }
@@ -87,6 +111,11 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
       // \u{2191} is the up arrow symbol
       self.loadMoreLabel.text = "\u{2191}\u{2191}Drag up for more comics\u{2191}\u{2191}"
     }
+  }
+
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    self.dragBeginOffset = self.comicTableView.contentOffset.y
+    self.headerHeightAtDragStart = self.headerView.frame.size.height
   }
 
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

@@ -59,10 +59,6 @@ class UVComicManager {
     let comicId = self.currentComicId! - index
     let comic = self.comicBuffer[comicId]
 
-    if comicId == 1900 {
-      print("debug")
-    }
-
     assert(comic != nil, "Could not find comic with id: \(comicId)")
     return comic!
   }

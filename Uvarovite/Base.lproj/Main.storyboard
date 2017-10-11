@@ -19,24 +19,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-sD-Onm" userLabel="HeaderView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="80"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="EtV-l6-z8W"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eus-bX-Twj" userLabel="BodyView">
-                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="600" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SLP-MR-9vH" customClass="UVComicTableView" customModule="Uvarovite" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="0.0" width="359" height="567"/>
+                                        <rect key="frame" x="8" y="0.0" width="359" height="647"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <view key="tableHeaderView" contentMode="scaleToFill" id="IDv-ow-72B" userLabel="TableInvisHeaderView">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <view key="tableFooterView" contentMode="scaleToFill" id="Xuc-ej-DUZ" userLabel="LoadMoreView">
-                                            <rect key="frame" x="0.0" y="328" width="359" height="44"/>
+                                            <rect key="frame" x="0.0" y="384" width="359" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑↑Drag up for more comics↑↑" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Std-V9-bv2">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Std-V9-bv2">
                                                     <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -53,7 +51,7 @@
                                         </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicTableViewCell" rowHeight="300" id="Bsm-fK-KEf" customClass="UVComicTableViewCell" customModule="Uvarovite" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="359" height="300"/>
+                                                <rect key="frame" x="0.0" y="84" width="359" height="300"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bsm-fK-KEf" id="MbI-UJ-IHj">
                                                     <rect key="frame" x="0.0" y="0.0" width="359" height="300"/>
@@ -173,13 +171,48 @@
                                     <constraint firstAttribute="trailing" secondItem="SLP-MR-9vH" secondAttribute="trailing" constant="8" id="jjS-dD-yCp"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-sD-Onm" userLabel="HeaderView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3M-rv-wau">
+                                        <rect key="frame" x="8" y="4" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="8Sk-jo-VoM"/>
+                                            <constraint firstAttribute="height" constant="48" id="GBJ-OB-Xs8"/>
+                                        </constraints>
+                                        <state key="normal" image="top-50.png"/>
+                                        <connections>
+                                            <action selector="didTapScrollToTopWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GDX-pB-2K0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-yz-mnd">
+                                        <rect key="frame" x="319" y="4" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="2Yy-w9-uNQ"/>
+                                            <constraint firstAttribute="height" constant="48" id="Woe-li-ven"/>
+                                        </constraints>
+                                        <state key="normal" image="settings-50.png"/>
+                                        <connections>
+                                            <action selector="didTapSettingsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="reS-ES-85V"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="e3M-rv-wau" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="top" constant="4" id="9su-Uh-gCX"/>
+                                    <constraint firstAttribute="height" constant="56" id="EtV-l6-z8W"/>
+                                    <constraint firstAttribute="trailing" secondItem="mwg-yz-mnd" secondAttribute="trailing" constant="8" id="TI8-cl-cy6"/>
+                                    <constraint firstItem="e3M-rv-wau" firstAttribute="leading" secondItem="bnD-sD-Onm" secondAttribute="leading" constant="8" id="rQl-yn-1UU"/>
+                                    <constraint firstItem="mwg-yz-mnd" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="top" constant="4" id="sQh-I9-5kC"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bnD-sD-Onm" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="3Sm-8T-aBO"/>
-                            <constraint firstItem="eus-bX-Twj" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="bottom" id="N6U-h4-0QE"/>
+                            <constraint firstItem="eus-bX-Twj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DS0-68-NyX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="top" id="IZn-SQ-kiS"/>
                             <constraint firstItem="eus-bX-Twj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Wnk-ed-tS8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="bottom" constant="-80" id="Zj6-pz-ffZ"/>
                             <constraint firstItem="eus-bX-Twj" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bIk-Cs-ACn"/>
                             <constraint firstItem="bnD-sD-Onm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cZN-9L-1cY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eus-bX-Twj" secondAttribute="bottom" id="p4Y-d9-2bg"/>
@@ -189,6 +222,8 @@
                     <connections>
                         <outlet property="comicTableView" destination="SLP-MR-9vH" id="ESy-la-g7d"/>
                         <outlet property="comicTableViewFooter" destination="Xuc-ej-DUZ" id="JyC-LJ-BGA"/>
+                        <outlet property="headerHeightConstraint" destination="EtV-l6-z8W" id="bbe-oc-kSk"/>
+                        <outlet property="headerView" destination="bnD-sD-Onm" id="ghJ-t5-PdH"/>
                         <outlet property="loadMoreLabel" destination="Std-V9-bv2" id="81z-dS-sv0"/>
                     </connections>
                 </viewController>
@@ -199,5 +234,7 @@
     </scenes>
     <resources>
         <image name="placeholder-359x175.png" width="359" height="175"/>
+        <image name="settings-50.png" width="50" height="50"/>
+        <image name="top-50.png" width="50" height="50"/>
     </resources>
 </document>
