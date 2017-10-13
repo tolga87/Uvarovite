@@ -58,6 +58,12 @@ class UVComicTableViewCell : UITableViewCell {
     }
   }
 
+  @IBAction func didTapOpen(sender: UIButton) {
+    if let url = self.comic?.webUrl {
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+  }
+
   @IBAction func didTapShowAltText(sender: UIButton) {
     self.showAltText()
   }
