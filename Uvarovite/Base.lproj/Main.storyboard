@@ -41,7 +41,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.72336632013320923" green="0.47564099809914834" blue="0.68728157794676148" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.93461138310000003" green="0.82086192280000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Std-V9-bv2" firstAttribute="centerX" secondItem="Xuc-ej-DUZ" secondAttribute="centerX" id="Oou-6H-21E"/>
                                                 <constraint firstItem="Std-V9-bv2" firstAttribute="width" secondItem="Xuc-ej-DUZ" secondAttribute="width" id="RtX-Rg-Jdz"/>
@@ -93,21 +93,27 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-a3-eRU">
                                                                     <rect key="frame" x="0.0" y="5" width="119.5" height="40"/>
-                                                                    <state key="normal" title="Share"/>
+                                                                    <state key="normal" title="Share">
+                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
                                                                     <connections>
                                                                         <action selector="didTapShareWithSender:" destination="Bsm-fK-KEf" eventType="touchUpInside" id="EgG-31-D7s"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLa-Io-cTA">
                                                                     <rect key="frame" x="119.5" y="5" width="119.5" height="40"/>
-                                                                    <state key="normal" title="Open"/>
+                                                                    <state key="normal" title="Open">
+                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
                                                                     <connections>
                                                                         <action selector="didTapOpenWithSender:" destination="Bsm-fK-KEf" eventType="touchUpInside" id="Edw-09-GWA"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Url-04-9cJ">
                                                                     <rect key="frame" x="239" y="5" width="119.5" height="40"/>
-                                                                    <state key="normal" title="Alt Text"/>
+                                                                    <state key="normal" title="Alt Text">
+                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
                                                                     <connections>
                                                                         <action selector="didTapShowAltTextWithSender:" destination="Bsm-fK-KEf" eventType="touchUpInside" id="yG5-f6-YPt"/>
                                                                     </connections>
@@ -116,7 +122,7 @@
                                                                     <rect key="frame" x="42" y="7" width="37" height="37"/>
                                                                 </activityIndicatorView>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.93461138308302216" green="0.82086192281095671" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.58431372549019611" green="0.65490196078431373" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="Url-04-9cJ" secondAttribute="trailing" id="10f-uU-zsc"/>
                                                                 <constraint firstItem="8f8-Qx-esP" firstAttribute="centerY" secondItem="wbY-a3-eRU" secondAttribute="centerY" id="1ES-Pf-mvf"/>
@@ -177,34 +183,34 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3M-rv-wau">
-                                        <rect key="frame" x="8" y="8" width="36" height="36"/>
+                                        <rect key="frame" x="12" y="8" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="8Sk-jo-VoM"/>
                                             <constraint firstAttribute="height" constant="36" id="GBJ-OB-Xs8"/>
                                         </constraints>
-                                        <state key="normal" image="top-50.png"/>
+                                        <state key="normal" image="chevron-up-50.png"/>
                                         <connections>
                                             <action selector="didTapScrollToTopWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GDX-pB-2K0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-yz-mnd">
-                                        <rect key="frame" x="331" y="8" width="36" height="36"/>
+                                        <rect key="frame" x="327" y="8" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="2Yy-w9-uNQ"/>
                                             <constraint firstAttribute="height" constant="36" id="Woe-li-ven"/>
                                         </constraints>
-                                        <state key="normal" image="settings-50.png"/>
+                                        <state key="normal" image="more-50.png"/>
                                         <connections>
                                             <action selector="didTapSettingsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="reS-ES-85V"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.58431372550000005" green="0.65490196079999996" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="e3M-rv-wau" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="top" constant="8" id="9su-Uh-gCX"/>
                                     <constraint firstAttribute="height" constant="56" id="EtV-l6-z8W"/>
-                                    <constraint firstAttribute="trailing" secondItem="mwg-yz-mnd" secondAttribute="trailing" constant="8" id="TI8-cl-cy6"/>
-                                    <constraint firstItem="e3M-rv-wau" firstAttribute="leading" secondItem="bnD-sD-Onm" secondAttribute="leading" constant="8" id="rQl-yn-1UU"/>
+                                    <constraint firstAttribute="trailing" secondItem="mwg-yz-mnd" secondAttribute="trailing" constant="12" id="TI8-cl-cy6"/>
+                                    <constraint firstItem="e3M-rv-wau" firstAttribute="leading" secondItem="bnD-sD-Onm" secondAttribute="leading" constant="12" id="rQl-yn-1UU"/>
                                     <constraint firstItem="mwg-yz-mnd" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="top" constant="8" id="sQh-I9-5kC"/>
                                 </constraints>
                             </view>
@@ -235,8 +241,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron-up-50.png" width="50" height="50"/>
+        <image name="more-50.png" width="50" height="50"/>
         <image name="placeholder-359x175.png" width="359" height="175"/>
-        <image name="settings-50.png" width="50" height="50"/>
-        <image name="top-50.png" width="50" height="50"/>
     </resources>
 </document>
