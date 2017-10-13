@@ -94,6 +94,9 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-a3-eRU">
                                                                     <rect key="frame" x="0.0" y="5" width="119.5" height="40"/>
                                                                     <state key="normal" title="Share"/>
+                                                                    <connections>
+                                                                        <action selector="didTapShareWithSender:" destination="Bsm-fK-KEf" eventType="touchUpInside" id="EgG-31-D7s"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLa-Io-cTA">
                                                                     <rect key="frame" x="119.5" y="5" width="119.5" height="40"/>
@@ -106,11 +109,16 @@
                                                                         <action selector="didTapShowAltTextWithSender:" destination="Bsm-fK-KEf" eventType="touchUpInside" id="yG5-f6-YPt"/>
                                                                     </connections>
                                                                 </button>
+                                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8f8-Qx-esP">
+                                                                    <rect key="frame" x="42" y="7" width="37" height="37"/>
+                                                                </activityIndicatorView>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.93461138308302216" green="0.82086192281095671" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="Url-04-9cJ" secondAttribute="trailing" id="10f-uU-zsc"/>
+                                                                <constraint firstItem="8f8-Qx-esP" firstAttribute="centerY" secondItem="wbY-a3-eRU" secondAttribute="centerY" id="1ES-Pf-mvf"/>
                                                                 <constraint firstItem="hLa-Io-cTA" firstAttribute="top" secondItem="fEu-6h-bun" secondAttribute="top" constant="5" id="2Mp-yb-fLb"/>
+                                                                <constraint firstItem="8f8-Qx-esP" firstAttribute="centerX" secondItem="wbY-a3-eRU" secondAttribute="centerX" id="8LH-AA-EMH"/>
                                                                 <constraint firstItem="Url-04-9cJ" firstAttribute="top" secondItem="fEu-6h-bun" secondAttribute="top" constant="5" id="CxW-P5-S8T"/>
                                                                 <constraint firstItem="wbY-a3-eRU" firstAttribute="leading" secondItem="fEu-6h-bun" secondAttribute="leading" id="EOR-ME-ap0"/>
                                                                 <constraint firstItem="hLa-Io-cTA" firstAttribute="leading" secondItem="wbY-a3-eRU" secondAttribute="trailing" id="KKb-fa-MsW"/>
@@ -148,6 +156,7 @@
                                                     <outlet property="altTextLabel" destination="0cv-Xo-Den" id="T5A-Z7-i6K"/>
                                                     <outlet property="comicImageView" destination="JYq-xf-Aje" id="wYd-xG-fk9"/>
                                                     <outlet property="infoLabel" destination="YH9-j5-fuI" id="N3Z-bx-c99"/>
+                                                    <outlet property="shareButtonSpinner" destination="8f8-Qx-esP" id="QQX-FO-Gm9"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

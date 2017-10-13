@@ -35,6 +35,9 @@
 		FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24341F8046E300BA1038 /* UVComicManager.swift */; };
 		FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24341F8046E300BA1038 /* UVComicManager.swift */; };
 		FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24341F8046E300BA1038 /* UVComicManager.swift */; };
+		FDD3022C1F8FF14300519C29 /* UVSharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */; };
+		FDD3022D1F8FF14300519C29 /* UVSharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */; };
+		FDD3022E1F8FF14300519C29 /* UVSharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,7 @@
 		FD9A24231F80437500BA1038 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD9A24301F80448B00BA1038 /* UVComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComic.swift; sourceTree = "<group>"; };
 		FD9A24341F8046E300BA1038 /* UVComicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicManager.swift; sourceTree = "<group>"; };
+		FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVSharingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,7 @@
 		FD9A24001F80437500BA1038 /* Uvarovite */ = {
 			isa = PBXGroup;
 			children = (
+				FDD3022A1F8FF13500519C29 /* Manager */,
 				FD9A24051F80437500BA1038 /* Main.storyboard */,
 				FD5CC67C1F8082B2006F4A27 /* UI */,
 				FD9A242F1F80443700BA1038 /* Model */,
@@ -194,6 +199,14 @@
 				FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FDD3022A1F8FF13500519C29 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +350,7 @@
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */,
+				FDD3022C1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */,
 				FD2C4DF31F896D2100CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */,
@@ -351,6 +365,7 @@
 				FD9A24321F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FDD3022D1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD2C4DF41F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
@@ -365,6 +380,7 @@
 				FD9A24331F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FDD3022E1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD2C4DF51F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,

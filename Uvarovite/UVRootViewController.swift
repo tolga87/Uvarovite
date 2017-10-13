@@ -7,12 +7,14 @@ enum UVComicTableViewLoadStatus {
   case loaded
 }
 
-class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UVComicSharing {
   @IBOutlet var headerView: UIView!
   @IBOutlet var headerHeightConstraint: NSLayoutConstraint!
   @IBOutlet var comicTableView: UVComicTableView!
   @IBOutlet var comicTableViewFooter: UIView!
   @IBOutlet var loadMoreLabel: UILabel!
+
+  static let activityViewControllerDidShowNotification = Notification.Name("activityViewControllerDidShow")
 
   var headerMaxHeight: CGFloat = 0
   var comicManager = UVComicManager.sharedInstance
@@ -76,11 +78,14 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ComicTableViewCell", for: indexPath) as! UVComicTableViewCell
     let comic = self.comicManager.comicAt(indexPath.row)
+    cell.comic = comic
+    comic.shareDelegate = self
     cell.comicId = comic.id
     cell.infoLabel.attributedText = self.getAttributedStringWith(title: comic.title ?? "",
                                                                  date: comic.date)
     cell.altTextLabel.text = comic.altText
     cell.setComicImage(comic.image)
+    cell.comic = comic
     return cell
   }
 
@@ -126,4 +131,25 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
       self.comicManager.fetchMoreComics(10)
     }
   }
+
+  // MARK: - UVComicSharing
+
+  // TODO: detect when we don't have access to Photo library and show a warning to the user.
+  func comicDidRequestShare(_ comic: UVComic) {
+    if comic.image == nil {
+      // don't share comic if we don't have the image
+      // TODO: show an error message if this happens.
+      return
+    }
+
+    let sharingManager = UVSharingManager.sharedInstance
+    let activityViewController = sharingManager.activityViewControllerFor(comic)
+
+    present(activityViewController, animated: true) {
+      NotificationCenter.default.post(name: UVRootViewController.activityViewControllerDidShowNotification,
+                                      object: self,
+                                      userInfo: nil)
+    }
+  }
+
 }

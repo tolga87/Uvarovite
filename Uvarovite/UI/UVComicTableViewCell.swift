@@ -5,6 +5,7 @@ class UVComicTableViewCell : UITableViewCell {
   @IBOutlet var infoLabel: UILabel!
   @IBOutlet var comicImageView: UIImageView!
   @IBOutlet var altTextLabel: UVLabel!
+  @IBOutlet var shareButtonSpinner: UIActivityIndicatorView!
 
   var comicId: Int = -1
   var comic: UVComic?
@@ -32,6 +33,12 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.edgeInsets = UIEdgeInsetsMake(1, 4, 1, 4)
     self.altTextLabel.adjustsFontSizeToFitWidth = true
     self.altTextLabel.minimumScaleFactor = 0.33
+
+    NotificationCenter.default.addObserver(forName: UVRootViewController.activityViewControllerDidShowNotification,
+                                           object: nil,
+                                           queue: OperationQueue.main) { (notification: Notification) in
+                                            self.shareButtonSpinner.stopAnimating()
+    }
   }
 
   override func prepareForReuse() {
@@ -42,6 +49,13 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.text = nil
     self.imageConstraint = nil
     self.comicImageView?.image = nil
+  }
+
+  @IBAction func didTapShare(sender: UIButton) {
+    if let comic = self.comic {
+      self.shareButtonSpinner.startAnimating()
+      comic.shareDelegate?.comicDidRequestShare(comic)
+    }
   }
 
   @IBAction func didTapShowAltText(sender: UIButton) {

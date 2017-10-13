@@ -1,6 +1,10 @@
 import Foundation
 import UIKit
 
+protocol UVComicSharing : NSObjectProtocol {
+  func comicDidRequestShare(_ comic: UVComic)
+}
+
 class UVComic: CustomStringConvertible {
   var id: Int
   var date: Date?
@@ -8,6 +12,13 @@ class UVComic: CustomStringConvertible {
   var altText: String?
   var imageUrl: URL?
   var image: UIImage?
+  var webUrl: URL? {
+    get {
+      let urlString = "https://xkcd.com/\(self.id)/"
+      return URL.init(string: urlString)
+    }
+  }
+  weak var shareDelegate: UVComicSharing?
 
   init(id: Int) {
     self.id = id
