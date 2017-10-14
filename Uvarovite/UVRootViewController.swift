@@ -46,30 +46,33 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   }
 
   @IBAction func didTapSettings(sender: UIButton) {
-    print("Not implemented yet!")
+    let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    menu.addAction(UIAlertAction(title: "Refresh Comics", style: .default, handler: { _ in
+      self.resetComics()
+    }))
+    menu.addAction(UIAlertAction(title: "Show release notes", style: .default, handler: { _ in
+      // Show release notes
+    }))
+    menu.addAction(UIAlertAction(title: "Rate xkcd Lite on the App Store", style: .default, handler: { _ in
+      // Rate
+    }))
+    menu.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+
+    // this is necessary for iPad.
+    menu.popoverPresentationController?.sourceView = sender
+    menu.popoverPresentationController?.sourceRect = sender.bounds
+
+    self.present(menu, animated: true)
   }
 
-  private func getAttributedStringWith(title: String, date: Date?) -> NSAttributedString {
-    let attributedString = NSMutableAttributedString()
-
-    let titleString = NSAttributedString.init(string: title,
-                                              attributes: [
-                                                .font : UIFont.systemFont(ofSize: 20),
-                                                .foregroundColor : UIColor.white,
-                                                ])
-    attributedString.append(titleString)
-
-    if let date = date {
-      let dateString = NSAttributedString.init(string: "\n\(self.dateFormatter.string(from: date))",
-                                               attributes: [
-                                                .font : UIFont.systemFont(ofSize: 14),
-                                                .foregroundColor : UIColor.lightGray,
-                                                ])
-      attributedString.append(dateString)
-    }
-
-    return attributedString
+  func resetComics() {
+    self.comicManager.reset()
+    self.comicTableView.reloadData()
+    self.comicLoadStatus = .loading
+    self.loadMoreLabel.text = "Loading..."
   }
+
+  // MARK: - TableView / ScrollView
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.comicManager.numComics()
@@ -81,8 +84,30 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     cell.comic = comic
     comic.shareDelegate = self
     cell.comicId = comic.id
-    cell.infoLabel.attributedText = self.getAttributedStringWith(title: comic.title ?? "",
-                                                                 date: comic.date)
+
+    func getAttributedStringWith(title: String, date: Date?) -> NSAttributedString {
+      let attributedString = NSMutableAttributedString()
+
+      let titleString = NSAttributedString.init(string: title,
+                                                attributes: [
+                                                  .font : UIFont.systemFont(ofSize: 20),
+                                                  .foregroundColor : UIColor.white,
+                                                  ])
+      attributedString.append(titleString)
+
+      if let date = date {
+        let dateString = NSAttributedString.init(string: "\n\(self.dateFormatter.string(from: date))",
+          attributes: [
+            .font : UIFont.systemFont(ofSize: 14),
+            .foregroundColor : UIColor.lightGray,
+            ])
+        attributedString.append(dateString)
+      }
+
+      return attributedString
+    }
+    cell.infoLabel.attributedText = getAttributedStringWith(title: comic.title ?? "",
+                                                            date: comic.date)
     cell.altTextLabel.text = comic.altText
     cell.setComicImage(comic.image)
     cell.comic = comic
@@ -145,7 +170,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     let sharingManager = UVSharingManager.sharedInstance
     let activityViewController = sharingManager.activityViewControllerFor(comic)
 
-    present(activityViewController, animated: true) {
+    self.present(activityViewController, animated: true) {
       NotificationCenter.default.post(name: UVRootViewController.activityViewControllerDidShowNotification,
                                       object: self,
                                       userInfo: nil)

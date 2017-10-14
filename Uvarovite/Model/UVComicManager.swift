@@ -27,10 +27,8 @@ enum ComicError: Error {
 
 class UVComicManager {
   static let sharedInstance = UVComicManager()
-//  static let managerReadyNotification = Notification.Name("ManagerReadyNotification")
   static let comicsDidUpdateNotification = Notification.Name("comicsDidUpdate")
 
-//  private(set) var ready = false
   private(set) var currentComicId: Int?
   private var currentComic: UVComic?
   private var comicBuffer = [Int: UVComic]()
@@ -44,6 +42,15 @@ class UVComicManager {
                                                                             object: self,
                                                                             userInfo: notification.userInfo)
     }
+
+    self.fetchCurrentComic()
+  }
+
+  func reset() {
+    self.currentComicId = nil
+    self.currentComic = nil
+    self.comicBuffer = [:]
+    self.comicIntervals = UVIntervalSet()
 
     self.fetchCurrentComic()
   }
