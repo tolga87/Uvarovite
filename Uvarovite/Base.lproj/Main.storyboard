@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -31,17 +32,17 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <view key="tableFooterView" contentMode="scaleToFill" id="Xuc-ej-DUZ" userLabel="LoadMoreView">
-                                            <rect key="frame" x="0.0" y="384" width="359" height="44"/>
+                                            <rect key="frame" x="0.0" y="384" width="359" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Std-V9-bv2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.93461138310000003" green="0.82086192280000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.43137254901960786" green="0.4823529411764706" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Std-V9-bv2" firstAttribute="centerX" secondItem="Xuc-ej-DUZ" secondAttribute="centerX" id="Oou-6H-21E"/>
                                                 <constraint firstItem="Std-V9-bv2" firstAttribute="width" secondItem="Xuc-ej-DUZ" secondAttribute="width" id="RtX-Rg-Jdz"/>

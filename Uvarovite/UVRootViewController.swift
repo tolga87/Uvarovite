@@ -21,8 +21,10 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   var comicLoadStatus = UVComicTableViewLoadStatus.initial
   var dateFormatter: DateFormatter = DateFormatter()
 
+  private var isDragging = false
   private var dragBeginOffset: CGFloat = 0
   private var headerHeightAtDragStart: CGFloat = 0
+  private let dragToLoadMoreThreshold = 1.5
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -135,22 +137,24 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     let percentage = self.calculateFooterRevealPercentage()
-    if percentage > 1 {
-      self.loadMoreLabel.text = String(format: "%.1f", percentage)
+    if percentage >= self.dragToLoadMoreThreshold && self.isDragging {
+      self.loadMoreLabel.text = "Release to load more comics"
     } else {
       // \u{2191} is the up arrow symbol
-      self.loadMoreLabel.text = "\u{2191}\u{2191}Drag up for more comics\u{2191}\u{2191}"
+      self.loadMoreLabel.text = "\u{2191}\u{2191}Drag up to load more comics\u{2191}\u{2191}"
     }
   }
 
   func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    self.isDragging = true
     self.dragBeginOffset = self.comicTableView.contentOffset.y
     self.headerHeightAtDragStart = self.headerView.frame.size.height
   }
 
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    self.isDragging = false
     let percentage = self.calculateFooterRevealPercentage()
-    if percentage >= 1.0 && self.comicLoadStatus == .loaded {
+    if percentage >= self.dragToLoadMoreThreshold && self.comicLoadStatus == .loaded {
       self.comicLoadStatus = .loading
       self.loadMoreLabel.text = "Loading..."
       self.comicManager.fetchMoreComics(10)
