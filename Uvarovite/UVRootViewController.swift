@@ -1,4 +1,5 @@
 import Foundation
+import StoreKit
 import UIKit
 
 enum UVComicTableViewLoadStatus {
@@ -50,13 +51,17 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   @IBAction func didTapSettings(sender: UIButton) {
     let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     menu.addAction(UIAlertAction(title: "Refresh Comics", style: .default, handler: { _ in
+      // Refresh
       self.resetComics()
     }))
     menu.addAction(UIAlertAction(title: "Show release notes", style: .default, handler: { _ in
       // Show release notes
+      let url = URL.init(string: "http://tolgaakin.com/?page_id=1229#xkcd")!
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }))
     menu.addAction(UIAlertAction(title: "Rate xkcd Lite on the App Store", style: .default, handler: { _ in
       // Rate
+      SKStoreReviewController.requestReview()
     }))
     menu.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
 
