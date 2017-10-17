@@ -63,6 +63,12 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
       // Rate
       SKStoreReviewController.requestReview()
     }))
+    menu.addAction(UIAlertAction(title: "See source code on GitHub", style: .default, handler: { _ in
+      // See source
+      let url = URL.init(string: "https://github.com/tolga87/Uvarovite")!
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+    }))
     menu.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
 
     // this is necessary for iPad.
