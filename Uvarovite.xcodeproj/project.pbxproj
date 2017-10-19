@@ -199,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				FD9A24301F80448B00BA1038 /* UVComic.swift */,
-				FD9A24341F8046E300BA1038 /* UVComicManager.swift */,
 				FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */,
 			);
 			path = Model;
@@ -208,6 +207,7 @@
 		FDD3022A1F8FF13500519C29 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				FD9A24341F8046E300BA1038 /* UVComicManager.swift */,
 				FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */,
 			);
 			path = Manager;
