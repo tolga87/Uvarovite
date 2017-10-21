@@ -20,7 +20,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   var headerMaxHeight: CGFloat = 0
   var comicManager = UVComicManager.sharedInstance
   var comicLoadStatus = UVComicTableViewLoadStatus.initial
-  var dateFormatter: DateFormatter = DateFormatter()
+
 
   private var isDragging = false
   private var dragBeginOffset: CGFloat = 0
@@ -32,7 +32,6 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
 
     self.comicTableView.dataSource = self
     self.comicTableView.delegate = self
-    self.dateFormatter.dateFormat = "yyyy-MM-dd"
     self.headerMaxHeight = self.headerView.frame.size.height
 
     NotificationCenter.default.addObserver(forName: UVComicManager.comicsDidUpdateNotification,
@@ -94,36 +93,8 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ComicTableViewCell", for: indexPath) as! UVComicTableViewCell
     let comic = self.comicManager.comicAt(indexPath.row)
-    cell.comic = comic
     comic.shareDelegate = self
-    cell.comicId = comic.id
-
-    func getAttributedStringWith(title: String, date: Date?) -> NSAttributedString {
-      let attributedString = NSMutableAttributedString()
-
-      let titleString = NSAttributedString.init(string: title,
-                                                attributes: [
-                                                  .font : UIFont.systemFont(ofSize: 20),
-                                                  .foregroundColor : UIColor.white,
-                                                  ])
-      attributedString.append(titleString)
-
-      if let date = date {
-        let dateString = NSAttributedString.init(string: "\n\(self.dateFormatter.string(from: date))",
-          attributes: [
-            .font : UIFont.systemFont(ofSize: 14),
-            .foregroundColor : UIColor.lightGray,
-            ])
-        attributedString.append(dateString)
-      }
-
-      return attributedString
-    }
-    cell.infoLabel.attributedText = getAttributedStringWith(title: comic.title ?? "",
-                                                            date: comic.date)
-    cell.altTextLabel.text = comic.altText
-    cell.setComicImage(comic.image)
-    cell.comic = comic
+    cell.updateWithComic(comic: comic)
     return cell
   }
 
@@ -168,7 +139,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     if percentage >= self.dragToLoadMoreThreshold && self.comicLoadStatus == .loaded {
       self.comicLoadStatus = .loading
       self.loadMoreLabel.text = "Loading..."
-      self.comicManager.fetchMoreComics(10)
+      self.comicManager.fetchMoreComics()
     }
   }
 

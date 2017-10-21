@@ -7,7 +7,8 @@ class UVComicTableViewCell : UITableViewCell {
   @IBOutlet var altTextLabel: UVLabel!
   @IBOutlet var shareButtonSpinner: UIActivityIndicatorView!
 
-  var comicId: Int = -1
+  private var dateFormatter: DateFormatter = DateFormatter()
+
   var comic: UVComic?
   var imageSize: CGSize?
 
@@ -34,6 +35,8 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.adjustsFontSizeToFitWidth = true
     self.altTextLabel.minimumScaleFactor = 0.33
 
+    self.dateFormatter.dateFormat = "yyyy-MM-dd"
+
     NotificationCenter.default.addObserver(forName: UVRootViewController.activityViewControllerDidShowNotification,
                                            object: nil,
                                            queue: OperationQueue.main) { (notification: Notification) in
@@ -49,6 +52,50 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.text = nil
     self.imageConstraint = nil
     self.comicImageView?.image = nil
+  }
+
+  func updateWithComic(comic: UVComic) {
+    self.comic = comic
+
+    func getAttributedStringWith(comicId: Int, title: String, date: Date?) -> NSAttributedString {
+      let attributedString = NSMutableAttributedString()
+
+      let comicIdString = NSAttributedString.init(string: "#\(comicId)  ",
+                                                  attributes: [
+                                                    .font : UIFont.systemFont(ofSize: 14),
+                                                    .foregroundColor : UIColor.lightGray,
+                                                    ])
+      attributedString.append(comicIdString)
+
+      let titleString = NSAttributedString.init(string: title,
+                                                attributes: [
+                                                  .font : UIFont.systemFont(ofSize: 20),
+                                                  .foregroundColor : UIColor.white,
+                                                  ])
+      attributedString.append(titleString)
+
+      if let date = date {
+        let dateString = NSAttributedString.init(string: "\n\(self.dateFormatter.string(from: date))",
+          attributes: [
+            .font : UIFont.systemFont(ofSize: 14),
+            .foregroundColor : UIColor.lightGray,
+            ])
+        attributedString.append(dateString)
+      }
+
+      return attributedString
+    }
+
+    self.infoLabel.attributedText = getAttributedStringWith(comicId: comic.id,
+                                                            title: comic.title ?? "",
+                                                            date: comic.date)
+    self.altTextLabel.text = comic.altText
+
+    var image = comic.image
+    if image == nil {
+      image = UIImage.init(named: "image-na-icon")
+    }
+    self.setComicImage(image)
   }
 
   @IBAction func didTapShare(sender: UIButton) {

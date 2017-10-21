@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FD2C4DF11F884FB800CE9203 /* placeholder-359x175.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */; };
-		FD2C4DF31F896D2100CE9203 /* UVIntervalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */; };
-		FD2C4DF41F896D2200CE9203 /* UVIntervalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */; };
-		FD2C4DF51F896D2200CE9203 /* UVIntervalSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */; };
 		FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
@@ -42,6 +39,7 @@
 		FDD302341F9177B100519C29 /* more-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD302331F9177B100519C29 /* more-50.png */; };
 		FDD302351F9177B100519C29 /* more-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD302331F9177B100519C29 /* more-50.png */; };
 		FDD302361F9177B100519C29 /* more-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD302331F9177B100519C29 /* more-50.png */; };
+		FDEDEB091F9856E900DF3F7A /* image-na-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEDEB081F9856E900DF3F7A /* image-na-icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +61,6 @@
 
 /* Begin PBXFileReference section */
 		FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-359x175.png"; sourceTree = "<group>"; };
-		FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVIntervalSet.swift; sourceTree = "<group>"; };
 		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
 		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
 		FD96D9FE1F8AA27100317385 /* UVLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVLabel.swift; sourceTree = "<group>"; };
@@ -85,6 +82,7 @@
 		FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVSharingManager.swift; sourceTree = "<group>"; };
 		FDD3022F1F91749700519C29 /* chevron-up-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-up-50.png"; sourceTree = "<group>"; };
 		FDD302331F9177B100519C29 /* more-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-50.png"; sourceTree = "<group>"; };
+		FDEDEB081F9856E900DF3F7A /* image-na-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-na-icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +113,7 @@
 		FD2C4DEF1F884F8200CE9203 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FDEDEB081F9856E900DF3F7A /* image-na-icon.png */,
 				FDD302331F9177B100519C29 /* more-50.png */,
 				FDD3022F1F91749700519C29 /* chevron-up-50.png */,
 				FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */,
@@ -199,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				FD9A24301F80448B00BA1038 /* UVComic.swift */,
-				FD2C4DF21F896D2100CE9203 /* UVIntervalSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,6 +321,7 @@
 				FD2C4DF11F884FB800CE9203 /* placeholder-359x175.png in Resources */,
 				FD9A240C1F80437500BA1038 /* LaunchScreen.storyboard in Resources */,
 				FD9A24091F80437500BA1038 /* Assets.xcassets in Resources */,
+				FDEDEB091F9856E900DF3F7A /* image-na-icon.png in Resources */,
 				FDD302341F9177B100519C29 /* more-50.png in Resources */,
 				FD9A24071F80437500BA1038 /* Main.storyboard in Resources */,
 				FDD302301F91749700519C29 /* chevron-up-50.png in Resources */,
@@ -360,7 +359,6 @@
 				FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */,
 				FDD3022C1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */,
-				FD2C4DF31F896D2100CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */,
 				FD9A24311F80448B00BA1038 /* UVComic.swift in Sources */,
 			);
@@ -375,7 +373,6 @@
 				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FDD3022D1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
-				FD2C4DF41F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
 				FD96DA001F8AA27100317385 /* UVLabel.swift in Sources */,
 			);
@@ -390,7 +387,6 @@
 				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FDD3022E1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
-				FD2C4DF51F896D2200CE9203 /* UVIntervalSet.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,
 				FD96DA011F8AA27100317385 /* UVLabel.swift in Sources */,
 			);

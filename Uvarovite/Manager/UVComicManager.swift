@@ -16,7 +16,6 @@ struct UVComicJSONObject: Codable {
 }
 
 typealias UVComicDownloadCallback = ((comic: UVComic?, error: ComicError?)) -> Void
-typealias UVComicImageDownloadCallback = ((comic: UVComic, error: ComicError?)) -> Void
 
 enum ComicError: Error {
   case invalidJson
@@ -31,81 +30,92 @@ class UVComicManager {
 
   private(set) var currentComicId: Int?
   private var currentComic: UVComic?
-  private var comicBuffer = [Int: UVComic]()
-  private var comicIntervals = UVIntervalSet()
+  private var comicBuffer = [UVComic?]()
+
+  private let comicPageSize = 10
+  private var comicPage = [UVComic?]()
+  private var numComicsInPage = 0
 
   init() {
-    NotificationCenter.default.addObserver(forName: UVIntervalSet.intervalLengthChangedNotification,
-                                           object: nil,
-                                           queue: OperationQueue.main) { (notification: Notification) in
-                                            NotificationCenter.default.post(name: UVComicManager.comicsDidUpdateNotification,
-                                                                            object: self,
-                                                                            userInfo: notification.userInfo)
-    }
-
     self.fetchCurrentComic()
   }
 
   func reset() {
     self.currentComicId = nil
     self.currentComic = nil
-    self.comicBuffer = [:]
-    self.comicIntervals = UVIntervalSet()
+    self.comicBuffer = []
 
     self.fetchCurrentComic()
   }
 
   func numComics() -> Int {
-    return self.comicIntervals.length
+    return self.comicBuffer.count
   }
 
   func comicAt(_ index: Int) -> UVComic {
-    assert(index >= 0 && index < self.comicIntervals.length,
-           "Invalid comic index: \(index). Number of comics: \(self.comicIntervals.length)")
+    assert(index >= 0 && index < self.comicBuffer.count,
+           "Invalid comic index: \(index). Number of comics: \(self.comicBuffer.count)")
 
-    let comicId = self.currentComicId! - index
-    let comic = self.comicBuffer[comicId]
+    let comic = self.comicBuffer[index]!
+    return comic
+  }
 
-    assert(comic != nil, "Could not find comic with id: \(comicId)")
-    return comic!
+  func fetchMoreComics() {
+    self.fetchComicPage(pageCount: self.comicPageSize)
   }
 
   private func fetchCurrentComic() {
-    self.fetchComic(comicIndex:0, comicId: 0) { (comic: UVComic?, error: ComicError?) in
-      if comic != nil {
-        self.fetchMoreComics(9)
+    self.fetchComic(comicIndex:0) { (comic: UVComic?, error: ComicError?) in
+      if let comic = comic {
+        self.currentComicId = comic.id
+        self.fetchComicPage(pageCount: self.comicPageSize - 1)
       } else {
         // TODO: process error
       }
     }
   }
 
-  private func addComic(_ comic: UVComic, at index: Int) {
-    if index == 0 {
-      self.currentComic = comic
-      self.currentComicId = comic.id
+  private func fetchComicPage(pageCount: Int) {
+    assert(self.currentComicId != nil, "Cannot fetch comic page: Current comic id unknown")
+
+    self.comicPage = Array.init(repeating: nil, count: pageCount)
+    self.numComicsInPage = 0
+
+    let lastComicIndex = self.comicBuffer.count
+    for comicIndex in lastComicIndex..<lastComicIndex + pageCount {
+      self.fetchComic(comicIndex: comicIndex, completion: { (comic: UVComic?, error: Error?) in
+        let pageIndex = comicIndex - lastComicIndex
+        if let comic = comic {
+          self.comicPage[pageIndex] = comic
+        } else {
+          let comicId = self.currentComicId! - comicIndex
+          self.comicPage[pageIndex] = UVComic.placeholderComic(id: comicId)
+        }
+
+        self.numComicsInPage += 1
+        print("Comic \(comicIndex) downloaded. Number of comics in page: \(self.numComicsInPage)")
+
+        if self.numComicsInPage == pageCount {
+          self.comicBuffer.append(contentsOf: self.comicPage)
+          self.comicPage = []
+          self.numComicsInPage = 0
+
+          print("ALL COMICS IN PAGE DOWNLOADED!")
+          NotificationCenter.default.post(name: UVComicManager.comicsDidUpdateNotification,
+                                          object: self,
+                                          userInfo: nil)
+        } else if self.numComicsInPage > pageCount {
+          assertionFailure("Inconsistency in comic buffer. Number of comics in page: \(self.numComicsInPage)")
+        }
+      })
     }
-    self.comicBuffer[comic.id] = comic
-    self.comicIntervals.addItem(index)
   }
 
-  func fetchMoreComics(_ additionalCount: Int) {
-    let firstIndexToFetch = self.comicIntervals.length
-    self.fetchComics(starting: firstIndexToFetch, count: additionalCount)
-  }
-
-  private func fetchComics(starting: Int, count: Int) {
-    for comicIndex in starting..<starting + count {
-      let comicId = self.currentComic!.id - comicIndex
-      self.fetchComic(comicIndex: comicIndex, comicId: comicId) { (comic, error) in
-        //
-      }
-    }
-  }
-
-  private func fetchComic(comicIndex: Int, comicId: Int, completion: @escaping UVComicDownloadCallback) {
+  private func fetchComic(comicIndex: Int, completion: @escaping UVComicDownloadCallback) {
     var jsonUrlString = "https://xkcd.com/"
-    if comicId > 0 {
+    if comicIndex > 0 {
+      assert(self.currentComicId != nil, "Cannot fetch comic #\(comicIndex): Current comic id unknown")
+      let comicId = self.currentComicId! - comicIndex
       jsonUrlString += "\(comicId)/"
     }
     jsonUrlString += "info.0.json"
@@ -128,14 +138,11 @@ class UVComicManager {
               completion((nil, .couldNotDownloadImage))
               return
             }
-            guard let image = UIImage(data: data) else {
-              // TODO: use variable 'error'
-              completion((nil, .invalidImageData))
-              return
+            if let image = UIImage(data: data) {
+              comic.image = image
             }
 
-            comic.image = image
-            self.addComic(comic, at: comicIndex)
+//            self.addComic(comic, at: comicIndex)
             DispatchQueue.main.async {
               let comicError = ComicError.other(description: error?.localizedDescription)
               completion((comic, comicError))

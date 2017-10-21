@@ -20,6 +20,10 @@ class UVComic: CustomStringConvertible {
   }
   weak var shareDelegate: UVComicSharing?
 
+  static func placeholderComic(id: Int) -> UVComic {
+    return UVComic(id: id)
+  }
+
   init(id: Int) {
     self.id = id
   }
