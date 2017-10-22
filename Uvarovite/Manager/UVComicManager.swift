@@ -60,6 +60,25 @@ class UVComicManager {
     return comic
   }
 
+  func saveComic(_ comic: UVComic) {
+    let encodedData = NSKeyedArchiver.archivedData(withRootObject: comic)
+    let key = String(comic.id)
+    UserDefaults.standard.set(encodedData, forKey: key)
+
+    // TODO: remove this before submitting to App Store
+    UserDefaults.standard.synchronize()
+  }
+
+  func loadComic(_ id: Int) -> UVComic? {
+    let key = String(id)
+    if let encodedData = UserDefaults.standard.object(forKey: key) as? Data {
+      let comic = NSKeyedUnarchiver.unarchiveObject(with: encodedData) as! UVComic
+      return comic
+    } else {
+      return nil
+    }
+  }
+
   func fetchMoreComics() {
     self.fetchComicPage(pageCount: self.comicPageSize)
   }
@@ -93,14 +112,12 @@ class UVComicManager {
         }
 
         self.numComicsInPage += 1
-        print("Comic \(comicIndex) downloaded. Number of comics in page: \(self.numComicsInPage)")
 
         if self.numComicsInPage == pageCount {
           self.comicBuffer.append(contentsOf: self.comicPage)
           self.comicPage = []
           self.numComicsInPage = 0
 
-          print("ALL COMICS IN PAGE DOWNLOADED!")
           NotificationCenter.default.post(name: UVComicManager.comicsDidUpdateNotification,
                                           object: self,
                                           userInfo: nil)
@@ -113,12 +130,18 @@ class UVComicManager {
 
   private func fetchComic(comicIndex: Int, completion: @escaping UVComicDownloadCallback) {
     var jsonUrlString = "https://xkcd.com/"
+    var comicId = 0
     if comicIndex > 0 {
       assert(self.currentComicId != nil, "Cannot fetch comic #\(comicIndex): Current comic id unknown")
-      let comicId = self.currentComicId! - comicIndex
+      comicId = self.currentComicId! - comicIndex
       jsonUrlString += "\(comicId)/"
     }
     jsonUrlString += "info.0.json"
+
+    if let cachedComic = self.loadComic(comicId) {
+      completion((cachedComic, nil))
+      return
+    }
 
     let jsonUrl = URL(string: jsonUrlString)!
 
@@ -142,14 +165,13 @@ class UVComicManager {
               comic.image = image
             }
 
-//            self.addComic(comic, at: comicIndex)
+            self.saveComic(comic)
             DispatchQueue.main.async {
               let comicError = ComicError.other(description: error?.localizedDescription)
               completion((comic, comicError))
             }
           }
           imageDownloadTask.resume()
-
         }
         catch {
           let comicError = ComicError.other(description: error.localizedDescription)

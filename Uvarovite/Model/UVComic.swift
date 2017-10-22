@@ -5,7 +5,7 @@ protocol UVComicSharing : NSObjectProtocol {
   func comicDidRequestShare(_ comic: UVComic)
 }
 
-class UVComic: CustomStringConvertible {
+class UVComic: NSObject, NSCoding {
   var id: Int
   var date: Date?
   var title: String?
@@ -28,8 +28,19 @@ class UVComic: CustomStringConvertible {
     self.id = id
   }
 
-  convenience init?(id: Int, date: Date, title: String, altText: String, imageUrl: URL) {
-    self.init(id:id)
+  convenience required init?(coder aDecoder: NSCoder) {
+    let id = aDecoder.decodeInteger(forKey: "id")
+    let date = aDecoder.decodeObject(forKey: "date") as! Date?
+    let title = aDecoder.decodeObject(forKey: "title") as! String?
+    let altText = aDecoder.decodeObject(forKey: "altText") as! String?
+    let imageUrl = aDecoder.decodeObject(forKey: "imageUrl") as! URL?
+
+    self.init(id: id, date: date, title: title, altText: altText, imageUrl: imageUrl)
+    self.image = aDecoder.decodeObject(forKey: "image") as! UIImage?
+  }
+
+  convenience init?(id: Int, date: Date?, title: String?, altText: String?, imageUrl: URL?) {
+    self.init(id: id)
     self.date = date
     self.title = title
     self.altText = altText
@@ -54,9 +65,18 @@ class UVComic: CustomStringConvertible {
               title: json.title,
               altText: json.alt,
               imageUrl: imageUrl)
-    }
+  }
 
-  var description: String {
+  func encode(with aCoder: NSCoder) {
+    aCoder.encode(self.id, forKey: "id")
+    aCoder.encode(self.date, forKey: "date")
+    aCoder.encode(self.title, forKey: "title")
+    aCoder.encode(self.altText, forKey: "altText")
+    aCoder.encode(self.imageUrl, forKey: "imageUrl")
+    aCoder.encode(self.image, forKey: "image")
+  }
+
+  override var description: String {
     let imageDownloaded = (self.image != nil)
     var dateString = "<NIL>"
     if let date = self.date {
@@ -66,6 +86,5 @@ class UVComic: CustomStringConvertible {
     }
 
     return "\(type(of: self)): \(dateString) | img downloaded: \(imageDownloaded ? "YES" : "NO")"
-
   }
 }
