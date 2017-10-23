@@ -8,12 +8,25 @@ enum UVComicTableViewLoadStatus {
   case loaded
 }
 
+enum UVActiveComicView {
+  case allComics
+  case favorites
+}
+
 class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UVComicSharing {
+  @IBOutlet var scrollView: UIScrollView!
+  @IBOutlet var activeTabIndicator: UIView!
+  @IBOutlet var activeTabIndicatorPositionConstraint: NSLayoutConstraint!
+  @IBOutlet var activeTabIndicatorWidthConstraint: NSLayoutConstraint!
+
   @IBOutlet var headerView: UIView!
   @IBOutlet var headerHeightConstraint: NSLayoutConstraint!
   @IBOutlet var comicTableView: UVComicTableView!
   @IBOutlet var comicTableViewFooter: UIView!
   @IBOutlet var loadMoreLabel: UILabel!
+
+  @IBOutlet var allComicsButton: UIButton!
+  @IBOutlet var favoritesButton: UIButton!
 
   static let activityViewControllerDidShowNotification = Notification.Name("activityViewControllerDidShow")
 
@@ -21,6 +34,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   var comicManager = UVComicManager.sharedInstance
   var comicLoadStatus = UVComicTableViewLoadStatus.initial
 
+  private var activeTableView = UVActiveComicView.allComics
 
   private var isDragging = false
   private var dragBeginOffset: CGFloat = 0
@@ -30,9 +44,14 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    self.scrollView.delegate = self
     self.comicTableView.dataSource = self
     self.comicTableView.delegate = self
     self.headerMaxHeight = self.headerView.frame.size.height
+
+    self.allComicsButton.sizeToFit()
+    self.favoritesButton.sizeToFit()
+    self.adjustActiveTab(0)
 
     NotificationCenter.default.addObserver(forName: UVComicManager.comicsDidUpdateNotification,
                                            object: nil,
@@ -43,8 +62,13 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     }
   }
 
-  @IBAction func didTapScrollToTop(sender: UIButton) {
-    self.comicTableView.setContentOffset(CGPoint.zero, animated: true)
+  @IBAction func didTapAllComics(sender: UIButton) {
+    self.scrollView.setContentOffset(CGPoint.zero, animated: true)
+  }
+
+  @IBAction func didTapFavorites(sender: UIButton) {
+    let contentOffset = CGPoint(x: self.scrollView.frame.size.width, y: 0)
+    self.scrollView.setContentOffset(contentOffset, animated: true)
   }
 
   @IBAction func didTapSettings(sender: UIButton) {
@@ -84,6 +108,37 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     self.loadMoreLabel.text = "Loading..."
   }
 
+  func adjustActiveTab(_ scrollPercentage: CGFloat) {
+    let percentage = self.clamp(scrollPercentage, 0, 1)
+
+    func interpolate(_ percent: CGFloat, _ minValue: CGFloat, _ maxValue: CGFloat) -> CGFloat {
+      return (maxValue - minValue) * percent + minValue
+    }
+
+    let allComicsButtonX = self.allComicsButton.frame.origin.x
+    let allComicsButtonWidth = self.allComicsButton.frame.size.width
+    let favoritesButtonX = self.favoritesButton.frame.origin.x
+    let favoritesButtonWidth = self.favoritesButton.frame.size.width
+
+    let indicatorX = interpolate(percentage, allComicsButtonX, favoritesButtonX)
+    let indicatorWidth = interpolate(percentage, allComicsButtonWidth, favoritesButtonWidth)
+
+    self.activeTabIndicatorPositionConstraint.constant = indicatorX
+    self.activeTabIndicatorWidthConstraint.constant = indicatorWidth
+
+    if percentage < 0.5 {
+      self.allComicsButton.titleLabel?.textColor = UIColor.white
+      self.favoritesButton.titleLabel?.textColor = UIColor.darkGray
+    } else {
+      self.allComicsButton.titleLabel?.textColor = UIColor.darkGray
+      self.favoritesButton.titleLabel?.textColor = UIColor.white
+    }
+  }
+
+  private func clamp(_ value: CGFloat, _ minValue: CGFloat, _ maxValue: CGFloat) -> CGFloat {
+    return min(maxValue, max(value, minValue))
+  }
+
   // MARK: - TableView / ScrollView
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,13 +160,23 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   }
 
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let scrollOffset = self.comicTableView.contentOffset.y
-    let dragAmount = scrollOffset - self.dragBeginOffset
-    func clamp(_ value: CGFloat, _ minValue: CGFloat, _ maxValue: CGFloat) -> CGFloat {
-      return min(maxValue, max(value, minValue))
+    if let tableView = scrollView as? UVComicTableView {
+      self.tableViewDidScroll(tableView)
+      return
     }
 
-    let headerHeight = clamp(self.headerHeightAtDragStart - dragAmount, 0, self.headerMaxHeight)
+    // This is the page-enabled, container scroll view
+    let scrollPercentage = self.scrollView.contentOffset.x / self.scrollView.frame.width
+    self.adjustActiveTab(scrollPercentage)
+  }
+
+  func tableViewDidScroll(_ tableView: UVComicTableView) {
+    // TODO: distinguish between events coming from all comics vs favorites
+
+    let scrollOffset = self.comicTableView.contentOffset.y
+    let dragAmount = scrollOffset - self.dragBeginOffset
+
+    let headerHeight = self.clamp(self.headerHeightAtDragStart - dragAmount, 0, self.headerMaxHeight)
     self.headerHeightConstraint.constant = headerHeight
 
     if self.comicLoadStatus != .loaded {
@@ -128,12 +193,19 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   }
 
   func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    if scrollView == self.scrollView {
+      return
+    }
     self.isDragging = true
     self.dragBeginOffset = self.comicTableView.contentOffset.y
     self.headerHeightAtDragStart = self.headerView.frame.size.height
   }
 
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    if scrollView == self.scrollView {
+      return
+    }
+
     self.isDragging = false
     let percentage = self.calculateFooterRevealPercentage()
     if percentage >= self.dragToLoadMoreThreshold && self.comicLoadStatus == .loaded {

@@ -366,15 +366,41 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnD-sD-Onm" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3M-rv-wau">
-                                        <rect key="frame" x="12" y="8" width="36" height="36"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3J-Dv-Ypj" userLabel="Active Tab Highlighter">
+                                        <rect key="frame" x="16" y="44" width="100" height="2"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="8Sk-jo-VoM"/>
+                                            <constraint firstAttribute="width" constant="100" id="UUT-Cc-ajq"/>
+                                            <constraint firstAttribute="height" constant="2" id="WvR-ZD-kMG"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3M-rv-wau">
+                                        <rect key="frame" x="16" y="10" width="100" height="36"/>
+                                        <constraints>
                                             <constraint firstAttribute="height" constant="36" id="GBJ-OB-Xs8"/>
                                         </constraints>
-                                        <state key="normal" image="chevron-up-50.png"/>
+                                        <state key="normal" title="All Comics">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
-                                            <action selector="didTapScrollToTopWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GDX-pB-2K0"/>
+                                            <action selector="didTapAllComicsWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lDt-CN-rAz"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2qV-yJ-aXk" userLabel="SeparatorView">
+                                        <rect key="frame" x="132" y="8" width="1" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="caQ-BI-Yiw"/>
+                                            <constraint firstAttribute="width" constant="1" id="iv8-99-FXM"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a8-TU-aSd">
+                                        <rect key="frame" x="149" y="10" width="123" height="36"/>
+                                        <state key="normal" title="Favorites">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapFavoritesWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KKR-z3-kHh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwg-yz-mnd">
@@ -391,11 +417,18 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.58431372550000005" green="0.65490196079999996" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="e3M-rv-wau" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="top" constant="8" id="9su-Uh-gCX"/>
+                                    <constraint firstItem="e3M-rv-wau" firstAttribute="centerY" secondItem="bnD-sD-Onm" secondAttribute="centerY" id="0jm-4b-tem"/>
                                     <constraint firstAttribute="height" constant="56" id="EtV-l6-z8W"/>
+                                    <constraint firstItem="1a8-TU-aSd" firstAttribute="centerY" secondItem="bnD-sD-Onm" secondAttribute="centerY" id="Jbr-YX-cPy"/>
                                     <constraint firstAttribute="trailing" secondItem="mwg-yz-mnd" secondAttribute="trailing" constant="12" id="TI8-cl-cy6"/>
-                                    <constraint firstItem="e3M-rv-wau" firstAttribute="leading" secondItem="bnD-sD-Onm" secondAttribute="leading" constant="12" id="rQl-yn-1UU"/>
+                                    <constraint firstItem="h3J-Dv-Ypj" firstAttribute="top" secondItem="e3M-rv-wau" secondAttribute="bottom" constant="-2" id="XOQ-NY-MaZ"/>
+                                    <constraint firstItem="1a8-TU-aSd" firstAttribute="height" secondItem="e3M-rv-wau" secondAttribute="height" id="fHb-hI-Nb5"/>
+                                    <constraint firstItem="2qV-yJ-aXk" firstAttribute="leading" secondItem="e3M-rv-wau" secondAttribute="trailing" constant="16" id="qDw-Vh-6aQ"/>
+                                    <constraint firstItem="1a8-TU-aSd" firstAttribute="leading" secondItem="2qV-yJ-aXk" secondAttribute="trailing" constant="16" id="r06-V6-eUs"/>
+                                    <constraint firstItem="e3M-rv-wau" firstAttribute="leading" secondItem="bnD-sD-Onm" secondAttribute="leading" constant="16" id="rQl-yn-1UU"/>
                                     <constraint firstItem="mwg-yz-mnd" firstAttribute="top" secondItem="bnD-sD-Onm" secondAttribute="top" constant="8" id="sQh-I9-5kC"/>
+                                    <constraint firstItem="h3J-Dv-Ypj" firstAttribute="leading" secondItem="bnD-sD-Onm" secondAttribute="leading" constant="16" id="ttF-w8-n3l"/>
+                                    <constraint firstItem="2qV-yJ-aXk" firstAttribute="centerY" secondItem="bnD-sD-Onm" secondAttribute="centerY" id="x8W-t6-X20"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -412,11 +445,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activeTabIndicator" destination="h3J-Dv-Ypj" id="wnp-U1-qi9"/>
+                        <outlet property="activeTabIndicatorPositionConstraint" destination="ttF-w8-n3l" id="Doh-Oi-m0O"/>
+                        <outlet property="activeTabIndicatorWidthConstraint" destination="UUT-Cc-ajq" id="dKR-aC-7l4"/>
+                        <outlet property="allComicsButton" destination="e3M-rv-wau" id="szt-2t-NAs"/>
                         <outlet property="comicTableView" destination="SLP-MR-9vH" id="ESy-la-g7d"/>
                         <outlet property="comicTableViewFooter" destination="Xuc-ej-DUZ" id="JyC-LJ-BGA"/>
+                        <outlet property="favoritesButton" destination="1a8-TU-aSd" id="n48-h9-FnI"/>
                         <outlet property="headerHeightConstraint" destination="EtV-l6-z8W" id="bbe-oc-kSk"/>
                         <outlet property="headerView" destination="bnD-sD-Onm" id="ghJ-t5-PdH"/>
                         <outlet property="loadMoreLabel" destination="Std-V9-bv2" id="81z-dS-sv0"/>
+                        <outlet property="scrollView" destination="Cim-lO-wrM" id="KsN-yg-WS9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -425,7 +464,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron-up-50.png" width="50" height="50"/>
         <image name="more-50.png" width="50" height="50"/>
         <image name="placeholder-359x175.png" width="359" height="175"/>
     </resources>
