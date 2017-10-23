@@ -3,7 +3,9 @@ import UIKit
 
 class UVComicTableViewCell : UITableViewCell {
   @IBOutlet var infoLabel: UILabel!
+  @IBOutlet var favoriteButton: UIButton?
   @IBOutlet var comicImageView: UIImageView!
+  @IBOutlet var footerView: UIView!
   @IBOutlet var altTextLabel: UVLabel!
   @IBOutlet var shareButtonSpinner: UIActivityIndicatorView!
 
@@ -27,6 +29,7 @@ class UVComicTableViewCell : UITableViewCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
+    self.footerView?.backgroundColor = UIColor.lightBlue
     self.altTextLabel.alpha = 0
     self.altTextLabel.layer.cornerRadius = 4
     self.altTextLabel.layer.masksToBounds = true
@@ -52,6 +55,10 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.text = nil
     self.imageConstraint = nil
     self.comicImageView?.image = nil
+  }
+
+  @IBAction func didTapFavoriteButton(sender: UIButton) {
+    print("Comic \(self.comic!.id) will be marked as favorite")
   }
 
   func updateWithComic(comic: UVComic) {

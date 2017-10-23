@@ -13,6 +13,7 @@ enum UVActiveComicView {
   case favorites
 }
 
+// TODO: fix rotation issues.
 class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UVComicSharing {
   @IBOutlet var scrollView: UIScrollView!
   @IBOutlet var activeTabIndicator: UIView!
@@ -24,11 +25,14 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   @IBOutlet var comicTableView: UVComicTableView!
   @IBOutlet var comicTableViewFooter: UIView!
   @IBOutlet var loadMoreLabel: UILabel!
+  @IBOutlet var favoritesView: UVComicTableView!
 
   @IBOutlet var allComicsButton: UIButton!
   @IBOutlet var favoritesButton: UIButton!
 
   static let activityViewControllerDidShowNotification = Notification.Name("activityViewControllerDidShow")
+
+  private let favoritesController = UVFavoritesController()
 
   var headerMaxHeight: CGFloat = 0
   var comicManager = UVComicManager.sharedInstance
@@ -44,9 +48,14 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    self.headerView.backgroundColor = UIColor.lightBlue
+    self.comicTableViewFooter.backgroundColor = UIColor.darkBlue
+
     self.scrollView.delegate = self
     self.comicTableView.dataSource = self
     self.comicTableView.delegate = self
+    self.favoritesView.dataSource = self.favoritesController
+    self.favoritesView.delegate = self.favoritesController
     self.headerMaxHeight = self.headerView.frame.size.height
 
     self.allComicsButton.sizeToFit()
@@ -171,8 +180,6 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   }
 
   func tableViewDidScroll(_ tableView: UVComicTableView) {
-    // TODO: distinguish between events coming from all comics vs favorites
-
     let scrollOffset = self.comicTableView.contentOffset.y
     let dragAmount = scrollOffset - self.dragBeginOffset
 

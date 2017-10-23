@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eus-bX-Twj" userLabel="BodyView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cim-lO-wrM">
+                                    <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cim-lO-wrM">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bv2-vd-san" userLabel="ContentView">
@@ -68,18 +68,31 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comic title Comic date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YH9-j5-fuI">
-                                                                                    <rect key="frame" x="4" y="0.0" width="367" height="75"/>
+                                                                                    <rect key="frame" x="4" y="0.0" width="329" height="75"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
+                                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xTV-XO-p7G" userLabel="FavoriteButton">
+                                                                                    <rect key="frame" x="337" y="22.5" width="30" height="30"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="30" id="G1h-Ax-HuX"/>
+                                                                                        <constraint firstAttribute="height" constant="30" id="vHL-O9-sPO"/>
+                                                                                    </constraints>
+                                                                                    <state key="normal" image="star-50.png"/>
+                                                                                    <connections>
+                                                                                        <action selector="didTapFavoriteButtonWithSender:" destination="Bsm-fK-KEf" eventType="touchUpInside" id="5hg-Dl-hTZ"/>
+                                                                                    </connections>
+                                                                                </button>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="YH9-j5-fuI" firstAttribute="top" secondItem="3d9-Fq-6hd" secondAttribute="top" id="LSJ-b5-xrc"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="xTV-XO-p7G" secondAttribute="trailing" constant="8" id="P2a-bE-SZt"/>
+                                                                                <constraint firstItem="xTV-XO-p7G" firstAttribute="leading" secondItem="YH9-j5-fuI" secondAttribute="trailing" constant="4" id="WmD-pD-B3M"/>
                                                                                 <constraint firstAttribute="height" constant="75" id="XAY-wY-yMy"/>
                                                                                 <constraint firstItem="YH9-j5-fuI" firstAttribute="leading" secondItem="3d9-Fq-6hd" secondAttribute="leading" constant="4" id="a6B-25-h8G"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="YH9-j5-fuI" secondAttribute="trailing" constant="4" id="z2D-n3-oD1"/>
+                                                                                <constraint firstItem="xTV-XO-p7G" firstAttribute="centerY" secondItem="3d9-Fq-6hd" secondAttribute="centerY" id="aim-T2-fds"/>
                                                                             </constraints>
                                                                         </view>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-359x175.png" translatesAutoresizingMaskIntoConstraints="NO" id="JYq-xf-Aje">
@@ -171,13 +184,15 @@
                                                                 <connections>
                                                                     <outlet property="altTextLabel" destination="0cv-Xo-Den" id="T5A-Z7-i6K"/>
                                                                     <outlet property="comicImageView" destination="JYq-xf-Aje" id="wYd-xG-fk9"/>
+                                                                    <outlet property="favoriteButton" destination="xTV-XO-p7G" id="DaS-rh-ZSQ"/>
+                                                                    <outlet property="footerView" destination="fEu-6h-bun" id="e0x-yV-pCj"/>
                                                                     <outlet property="infoLabel" destination="YH9-j5-fuI" id="N3Z-bx-c99"/>
                                                                     <outlet property="shareButtonSpinner" destination="8f8-Qx-esP" id="QQX-FO-Gm9"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
                                                     </tableView>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="600" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Oa-Q1-E3d" userLabel="Favorites Table View" customClass="UVComicTableView" customModule="Uvarovite" customModuleProvider="target">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="80" estimatedRowHeight="600" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Oa-Q1-E3d" userLabel="Favorites Table View" customClass="UVComicTableView" customModule="Uvarovite" customModuleProvider="target">
                                                         <rect key="frame" x="375" y="0.0" width="375" height="647"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
@@ -186,28 +201,35 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <view key="tableFooterView" contentMode="scaleToFill" id="qq0-TR-qNM" userLabel="LoadMoreView">
-                                                            <rect key="frame" x="0.0" y="384" width="375" height="60"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avq-YU-UyW">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <color key="backgroundColor" red="0.43137254899999999" green="0.4823529412" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstItem="Avq-YU-UyW" firstAttribute="width" secondItem="qq0-TR-qNM" secondAttribute="width" id="Iqa-eZ-v2T"/>
-                                                                <constraint firstItem="Avq-YU-UyW" firstAttribute="centerX" secondItem="qq0-TR-qNM" secondAttribute="centerX" id="mCA-eW-3fU"/>
-                                                                <constraint firstItem="Avq-YU-UyW" firstAttribute="centerY" secondItem="qq0-TR-qNM" secondAttribute="centerY" id="ttH-ct-8WE"/>
-                                                                <constraint firstItem="Avq-YU-UyW" firstAttribute="height" secondItem="qq0-TR-qNM" secondAttribute="height" id="ybt-EF-2F0"/>
-                                                            </constraints>
-                                                        </view>
                                                         <prototypes>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritesEmptyCell" id="F0c-xj-vlx" userLabel="FavoritesEmptyCell" customClass="UVComicTableViewNoFavoritesCell" customModule="Uvarovite" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="84" width="375" height="80"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F0c-xj-vlx" id="7Vf-yX-Mt0">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no favorite comics. You can tap the ☆ icon next to comics to mark them as favorite. You can then view them here." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohp-fi-Nu8" userLabel="InfoLabel">
+                                                                            <rect key="frame" x="8" y="0.0" width="359" height="80"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="Ohp-fi-Nu8" firstAttribute="leading" secondItem="7Vf-yX-Mt0" secondAttribute="leading" constant="8" id="2Gq-ry-QvY"/>
+                                                                        <constraint firstItem="Ohp-fi-Nu8" firstAttribute="top" secondItem="7Vf-yX-Mt0" secondAttribute="top" id="5mI-p9-rOu"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Ohp-fi-Nu8" secondAttribute="bottom" id="6Yb-BV-bzL"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Ohp-fi-Nu8" secondAttribute="trailing" constant="8" id="WCA-zC-bfp"/>
+                                                                    </constraints>
+                                                                </tableViewCellContentView>
+                                                                <color key="backgroundColor" red="1" green="0.55316840277777779" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <outlet property="infoLabel" destination="Ohp-fi-Nu8" id="Dqj-JL-8Pr"/>
+                                                                </connections>
+                                                            </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicTableViewCell" rowHeight="300" id="EfR-rv-mIf" customClass="UVComicTableViewCell" customModule="Uvarovite" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="84" width="375" height="300"/>
+                                                                <rect key="frame" x="0.0" y="164" width="375" height="300"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EfR-rv-mIf" id="WuT-Ex-M3M">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
@@ -320,6 +342,7 @@
                                                                 <connections>
                                                                     <outlet property="altTextLabel" destination="c9P-Nx-7ZC" id="LwL-2u-K3S"/>
                                                                     <outlet property="comicImageView" destination="MUy-QA-k3o" id="buH-Rm-WvH"/>
+                                                                    <outlet property="footerView" destination="vHc-F7-QYR" id="TEX-l1-79h"/>
                                                                     <outlet property="infoLabel" destination="wz4-3z-pD8" id="flM-LE-W49"/>
                                                                     <outlet property="shareButtonSpinner" destination="L0C-Yu-L9Y" id="6ph-2h-U4c"/>
                                                                 </connections>
@@ -452,6 +475,7 @@
                         <outlet property="comicTableView" destination="SLP-MR-9vH" id="ESy-la-g7d"/>
                         <outlet property="comicTableViewFooter" destination="Xuc-ej-DUZ" id="JyC-LJ-BGA"/>
                         <outlet property="favoritesButton" destination="1a8-TU-aSd" id="n48-h9-FnI"/>
+                        <outlet property="favoritesView" destination="0Oa-Q1-E3d" id="O0e-IP-PZW"/>
                         <outlet property="headerHeightConstraint" destination="EtV-l6-z8W" id="bbe-oc-kSk"/>
                         <outlet property="headerView" destination="bnD-sD-Onm" id="ghJ-t5-PdH"/>
                         <outlet property="loadMoreLabel" destination="Std-V9-bv2" id="81z-dS-sv0"/>
@@ -466,5 +490,6 @@
     <resources>
         <image name="more-50.png" width="50" height="50"/>
         <image name="placeholder-359x175.png" width="359" height="175"/>
+        <image name="star-50.png" width="50" height="50"/>
     </resources>
 </document>

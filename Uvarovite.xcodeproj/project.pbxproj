@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		FD2C4DF11F884FB800CE9203 /* placeholder-359x175.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */; };
+		FD2C652E1F9D85800037BA0C /* UVFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C652D1F9D85800037BA0C /* UVFavoritesController.swift */; };
+		FD2C652F1F9D85800037BA0C /* UVFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C652D1F9D85800037BA0C /* UVFavoritesController.swift */; };
+		FD2C65301F9D85800037BA0C /* UVFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C652D1F9D85800037BA0C /* UVFavoritesController.swift */; };
+		FD2C65321F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C65311F9D8BF00037BA0C /* UIColor+CustomColors.swift */; };
+		FD2C65331F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C65311F9D8BF00037BA0C /* UIColor+CustomColors.swift */; };
+		FD2C65341F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C65311F9D8BF00037BA0C /* UIColor+CustomColors.swift */; };
+		FD2C65361F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */; };
+		FD2C65371F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */; };
+		FD2C65381F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */; };
+		FD2C653B1F9D92B40037BA0C /* star-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C65391F9D92B20037BA0C /* star-50.png */; };
+		FD2C653C1F9D92B40037BA0C /* star-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C65391F9D92B20037BA0C /* star-50.png */; };
+		FD2C653D1F9D92B40037BA0C /* star-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C65391F9D92B20037BA0C /* star-50.png */; };
+		FD2C653E1F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
+		FD2C653F1F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
+		FD2C65401F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
 		FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
@@ -61,6 +76,11 @@
 
 /* Begin PBXFileReference section */
 		FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-359x175.png"; sourceTree = "<group>"; };
+		FD2C652D1F9D85800037BA0C /* UVFavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFavoritesController.swift; sourceTree = "<group>"; };
+		FD2C65311F9D8BF00037BA0C /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
+		FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewNoFavoritesCell.swift; sourceTree = "<group>"; };
+		FD2C65391F9D92B20037BA0C /* star-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-50.png"; sourceTree = "<group>"; };
+		FD2C653A1F9D92B30037BA0C /* star-filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-filled-50.png"; sourceTree = "<group>"; };
 		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
 		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
 		FD96D9FE1F8AA27100317385 /* UVLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVLabel.swift; sourceTree = "<group>"; };
@@ -113,6 +133,8 @@
 		FD2C4DEF1F884F8200CE9203 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FD2C65391F9D92B20037BA0C /* star-50.png */,
+				FD2C653A1F9D92B30037BA0C /* star-filled-50.png */,
 				FDEDEB081F9856E900DF3F7A /* image-na-icon.png */,
 				FDD302331F9177B100519C29 /* more-50.png */,
 				FDD3022F1F91749700519C29 /* chevron-up-50.png */,
@@ -127,6 +149,7 @@
 				FD96D9FD1F8AA26200317385 /* Common */,
 				FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */,
 				FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */,
+				FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -135,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				FD96D9FE1F8AA27100317385 /* UVLabel.swift */,
+				FD2C65311F9D8BF00037BA0C /* UIColor+CustomColors.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -168,6 +192,7 @@
 				FD9A242F1F80443700BA1038 /* Model */,
 				FD9A24011F80437500BA1038 /* AppDelegate.swift */,
 				FD9A24031F80437500BA1038 /* UVRootViewController.swift */,
+				FD2C652D1F9D85800037BA0C /* UVFavoritesController.swift */,
 				FD9A24081F80437500BA1038 /* Assets.xcassets */,
 				FD9A240A1F80437500BA1038 /* LaunchScreen.storyboard */,
 				FD9A240D1F80437500BA1038 /* Info.plist */,
@@ -318,8 +343,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2C653E1F9D92B40037BA0C /* star-filled-50.png in Resources */,
 				FD2C4DF11F884FB800CE9203 /* placeholder-359x175.png in Resources */,
 				FD9A240C1F80437500BA1038 /* LaunchScreen.storyboard in Resources */,
+				FD2C653B1F9D92B40037BA0C /* star-50.png in Resources */,
 				FD9A24091F80437500BA1038 /* Assets.xcassets in Resources */,
 				FDEDEB091F9856E900DF3F7A /* image-na-icon.png in Resources */,
 				FDD302341F9177B100519C29 /* more-50.png in Resources */,
@@ -333,6 +360,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDD302311F91749700519C29 /* chevron-up-50.png in Resources */,
+				FD2C653C1F9D92B40037BA0C /* star-50.png in Resources */,
+				FD2C653F1F9D92B40037BA0C /* star-filled-50.png in Resources */,
 				FDD302351F9177B100519C29 /* more-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +371,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDD302321F91749700519C29 /* chevron-up-50.png in Resources */,
+				FD2C653D1F9D92B40037BA0C /* star-50.png in Resources */,
+				FD2C65401F9D92B40037BA0C /* star-filled-50.png in Resources */,
 				FDD302361F9177B100519C29 /* more-50.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,11 +387,14 @@
 				FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
+				FD2C65361F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */,
 				FDD3022C1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */,
+				FD2C65321F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
 				FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */,
 				FD9A24311F80448B00BA1038 /* UVComic.swift in Sources */,
+				FD2C652E1F9D85800037BA0C /* UVFavoritesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,9 +402,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2C652F1F9D85800037BA0C /* UVFavoritesController.swift in Sources */,
+				FD2C65371F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD9A24321F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FD2C65331F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
 				FDD3022D1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
@@ -382,9 +419,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD2C65301F9D85800037BA0C /* UVFavoritesController.swift in Sources */,
+				FD2C65381F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD9A24331F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FD2C65341F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
 				FDD3022E1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,
