@@ -50,13 +50,13 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
 
     self.headerView.backgroundColor = UIColor.lightBlue
     self.comicTableViewFooter.backgroundColor = UIColor.darkBlue
+    self.headerMaxHeight = self.headerView.frame.size.height
 
     self.scrollView.delegate = self
     self.comicTableView.dataSource = self
     self.comicTableView.delegate = self
-    self.favoritesView.dataSource = self.favoritesController
-    self.favoritesView.delegate = self.favoritesController
-    self.headerMaxHeight = self.headerView.frame.size.height
+
+    self.favoritesController.tableView = self.favoritesView
 
     self.allComicsButton.sizeToFit()
     self.favoritesButton.sizeToFit()
@@ -160,7 +160,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     let cell = tableView.dequeueReusableCell(withIdentifier: "ComicTableViewCell", for: indexPath) as! UVComicTableViewCell
     let comic = self.comicManager.comicAt(indexPath.row)
     comic.shareDelegate = self
-    cell.updateWithComic(comic: comic)
+    cell.updateWithComic(comic)
     return cell
   }
 

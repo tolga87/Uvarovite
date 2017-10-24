@@ -91,7 +91,7 @@ class UVComicTableViewCell : UITableViewCell {
                                   for: UIControlState.normal)
   }
 
-  func updateWithComic(comic: UVComic) {
+  func updateWithComic(_ comic: UVComic) {
     self.comic = comic
 
     func getAttributedStringWith(comicId: Int, title: String, date: Date?) -> NSAttributedString {
