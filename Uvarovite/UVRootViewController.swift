@@ -268,4 +268,18 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     }
   }
 
+  // MARK: - Rotation
+
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+
+    let page = (self.getScrollViewPagePercentage() < 0.5 ? 0 : 1)
+    let offset = CGPoint.init(x: CGFloat(page) * size.width,
+                              y: self.scrollView.contentOffset.y)
+    coordinator.animate(alongsideTransition: { (context: UIViewControllerTransitionCoordinatorContext) in
+      self.scrollView.setContentOffset(offset, animated: false)
+    },
+                        completion: nil)
+  }
+
 }
