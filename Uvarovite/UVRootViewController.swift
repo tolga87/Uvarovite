@@ -62,6 +62,8 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     self.favoritesButton.sizeToFit()
     self.adjustActiveTab(0)
 
+    _ = UVFavoritesManager.sharedInstance  // Make sure favorites manager is instantiated before we show anything.
+
     NotificationCenter.default.addObserver(forName: UVComicManager.comicsDidUpdateNotification,
                                            object: nil,
                                            queue: OperationQueue.main) { (notification: Notification) in

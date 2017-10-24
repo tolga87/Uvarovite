@@ -45,6 +45,9 @@
 		FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24341F8046E300BA1038 /* UVComicManager.swift */; };
 		FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24341F8046E300BA1038 /* UVComicManager.swift */; };
 		FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9A24341F8046E300BA1038 /* UVComicManager.swift */; };
+		FDADBC7F1F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */; };
+		FDADBC801F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */; };
+		FDADBC811F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */; };
 		FDD3022C1F8FF14300519C29 /* UVSharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */; };
 		FDD3022D1F8FF14300519C29 /* UVSharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */; };
 		FDD3022E1F8FF14300519C29 /* UVSharingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */; };
@@ -99,6 +102,7 @@
 		FD9A24231F80437500BA1038 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD9A24301F80448B00BA1038 /* UVComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComic.swift; sourceTree = "<group>"; };
 		FD9A24341F8046E300BA1038 /* UVComicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicManager.swift; sourceTree = "<group>"; };
+		FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFavoritesManager.swift; sourceTree = "<group>"; };
 		FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVSharingManager.swift; sourceTree = "<group>"; };
 		FDD3022F1F91749700519C29 /* chevron-up-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-up-50.png"; sourceTree = "<group>"; };
 		FDD302331F9177B100519C29 /* more-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-50.png"; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			children = (
 				FD9A24341F8046E300BA1038 /* UVComicManager.swift */,
 				FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */,
+				FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDADBC7F1F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */,
 				FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
@@ -408,6 +414,7 @@
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD2C65331F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
+				FDADBC801F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */,
 				FDD3022D1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
@@ -425,6 +432,7 @@
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD2C65341F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
+				FDADBC811F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */,
 				FDD3022E1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,

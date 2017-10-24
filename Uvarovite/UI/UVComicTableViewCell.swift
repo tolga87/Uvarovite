@@ -39,11 +39,17 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.minimumScaleFactor = 0.33
 
     self.dateFormatter.dateFormat = "yyyy-MM-dd"
+    self.setFavorite(false)
 
     NotificationCenter.default.addObserver(forName: UVRootViewController.activityViewControllerDidShowNotification,
                                            object: nil,
                                            queue: OperationQueue.main) { (notification: Notification) in
                                             self.shareButtonSpinner.stopAnimating()
+    }
+    NotificationCenter.default.addObserver(forName: UVFavoritesManager.favoritesUpdatedNotification,
+                                           object: nil,
+                                           queue: OperationQueue.main) { (notification: Notification) in
+                                            self.updateFavoriteStatus()
     }
   }
 
@@ -55,10 +61,34 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.text = nil
     self.imageConstraint = nil
     self.comicImageView?.image = nil
+    self.setFavorite(false)
   }
 
   @IBAction func didTapFavoriteButton(sender: UIButton) {
-    print("Comic \(self.comic!.id) will be marked as favorite")
+    guard let comicId = self.comic?.id else {
+      return
+    }
+
+    let favoritesManager = UVFavoritesManager.sharedInstance
+    let isFavorite = favoritesManager.isFavorite(id: comicId)
+    if isFavorite {
+      favoritesManager.unfavoriteComic(id: comicId)
+    } else {
+      favoritesManager.favoriteComic(id: comicId)
+    }
+  }
+
+  private func updateFavoriteStatus() {
+    if let comicId = self.comic?.id {
+      let isFavorite = UVFavoritesManager.sharedInstance.isFavorite(id: comicId)
+      self.setFavorite(isFavorite)
+    }
+  }
+
+  private func setFavorite(_ isFavorite: Bool) {
+    let starImageName = (isFavorite ? "star-filled-50" : "star-50")
+    self.favoriteButton?.setImage(UIImage.init(named: starImageName),
+                                  for: UIControlState.normal)
   }
 
   func updateWithComic(comic: UVComic) {
@@ -103,6 +133,7 @@ class UVComicTableViewCell : UITableViewCell {
       image = UIImage.init(named: "image-na-icon")
     }
     self.setComicImage(image)
+    self.updateFavoriteStatus()
   }
 
   @IBAction func didTapShare(sender: UIButton) {
