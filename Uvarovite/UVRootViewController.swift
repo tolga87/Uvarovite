@@ -177,7 +177,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     }
 
     // This is the page-enabled, container scroll view
-    let scrollPercentage = self.scrollView.contentOffset.x / self.scrollView.frame.width
+    let scrollPercentage = self.getScrollViewPagePercentage()
     self.adjustActiveTab(scrollPercentage)
   }
 
@@ -221,6 +221,30 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
       self.comicLoadStatus = .loading
       self.loadMoreLabel.text = "Loading..."
       self.comicManager.fetchMoreComics()
+    }
+  }
+
+  private func getScrollViewPagePercentage() -> CGFloat {
+    return self.scrollView.contentOffset.x / self.scrollView.frame.width
+  }
+
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    if self.getScrollViewPagePercentage() == 1.0 {
+      self.revealHeaderWithAnimation()
+    }
+  }
+
+  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    if self.getScrollViewPagePercentage() == 1.0 {
+      self.revealHeaderWithAnimation()
+    }
+  }
+
+  private func revealHeaderWithAnimation() {
+    self.view.layoutIfNeeded()
+    self.headerHeightConstraint.constant = self.headerMaxHeight
+    UIView.animate(withDuration: 0.2) {
+      self.view.layoutIfNeeded()
     }
   }
 
