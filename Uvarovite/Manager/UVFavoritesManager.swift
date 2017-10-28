@@ -16,7 +16,7 @@ class UVFavoritesManager {
   }
 
   func allFavoriteComicIds() -> [Int] {
-    let keysArray = Array(self.favorites.keys).sorted()
+    let keysArray = Array(self.favorites.keys).sorted().reversed()
     return keysArray.map {
       Int($0)!
     }
