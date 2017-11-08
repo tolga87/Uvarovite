@@ -18,7 +18,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvf-yH-PhW" userLabel="HeaderView">
                     <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-kQ-ewp">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comic Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-kQ-ewp">
                             <rect key="frame" x="8" y="0.0" width="329" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -71,7 +71,58 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpE-ml-AB9" userLabel="FooterView">
                     <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shb-86-AdA">
+                            <rect key="frame" x="10" y="10" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="prev-100.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapPrevWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="Bfr-sh-gS0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAg-qv-akc" userLabel="FavoriteButton">
+                            <rect key="frame" x="57" y="12" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="star-100.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbV-5Q-FrH">
+                            <rect key="frame" x="116" y="10" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="share-100.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLe-0H-kzh">
+                            <rect key="frame" x="178" y="10" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="alt-100.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapAltTextWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="nPr-py-r32"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrV-v1-dok">
+                            <rect key="frame" x="251" y="10" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="explain-100.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4U-Zd-PU2">
+                            <rect key="frame" x="337" y="10" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="next-100.png">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapNextWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="Iag-tw-e5c"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Q0i-Im-4qM"/>
                     </constraints>
@@ -91,14 +142,28 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="altTextButton" destination="uLe-0H-kzh" id="0Zj-6P-XFS"/>
+                <outlet property="explainButton" destination="jrV-v1-dok" id="kEd-xR-PqF"/>
+                <outlet property="favoriteButton" destination="PAg-qv-akc" id="xlC-Ng-MF4"/>
                 <outlet property="footerView" destination="WpE-ml-AB9" id="BdY-wh-hdV"/>
                 <outlet property="headerView" destination="bvf-yH-PhW" id="m1X-J5-Piu"/>
                 <outlet property="imageView" destination="MHm-YQ-8V9" id="t89-wx-Cqv"/>
                 <outlet property="imageViewHeightConstraint" destination="9r0-ah-mxC" id="bVQ-nM-xiZ"/>
                 <outlet property="imageViewWidthConstraint" destination="hOG-w5-cXx" id="r92-Ph-8I9"/>
+                <outlet property="nextButton" destination="W4U-Zd-PU2" id="xTF-hP-Syp"/>
+                <outlet property="prevButton" destination="shb-86-AdA" id="kui-Lt-Bex"/>
+                <outlet property="shareButton" destination="CbV-5Q-FrH" id="m8d-BK-9Fb"/>
                 <outlet property="titleLabel" destination="oXc-kQ-ewp" id="1BF-4M-wnC"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="alt-100.png" width="100" height="100"/>
+        <image name="explain-100.png" width="100" height="100"/>
+        <image name="next-100.png" width="100" height="100"/>
+        <image name="prev-100.png" width="100" height="100"/>
+        <image name="share-100.png" width="100" height="100"/>
+        <image name="star-100.png" width="100" height="100"/>
+    </resources>
 </document>

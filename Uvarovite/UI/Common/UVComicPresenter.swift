@@ -33,4 +33,17 @@ class UVComicPresenter {
 
     return attributedString
   }
+
+  class func altTextLabel() -> UVLabel {
+    let label = UVLabel()
+    label.numberOfLines = 0
+    label.backgroundColor = .altTextBackgroundColor
+    label.textColor = .white
+    label.layer.cornerRadius = 4
+    label.layer.masksToBounds = true
+    label.edgeInsets = UIEdgeInsetsMake(2, 4, 2, 4)
+    label.adjustsFontSizeToFitWidth = true
+    label.minimumScaleFactor = 0.33
+    return label
+  }
 }

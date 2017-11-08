@@ -47,13 +47,21 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
     }
   }
 
+  func setPageOffset(_ page: Int) {
+    // this method does not check the boundaries
+    let offsetX = CGFloat(page) * self.scrollView.frame.width
+    let contentOffset = CGPoint(x: offsetX, y:0)
+    self.scrollView.setContentOffset(contentOffset, animated: false)
+  }
+
   override func viewWillLayoutSubviews() {
     self.scrollView.frame = self.view.bounds
 
-    for i in 0 ..< pages.count {
-      let page = pages[i]
+    for i in 0 ..< self.pages.count {
+      let page = self.pages[i]
       var frame = self.scrollView.bounds
       frame.origin.x = CGFloat(i) * frame.width
+      frame.origin.y = CGFloat(0.0)
       page.frame = frame
     }
 
@@ -62,9 +70,7 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
     self.scrollView.contentSize = .init(width: contentWidth, height: contentHeight)
 
     if self.currentPage != 0 {
-      let offsetX = CGFloat(self.currentPage) * self.scrollView.frame.width
-      let contentOffset = CGPoint(x: offsetX, y:0)
-      self.scrollView.setContentOffset(contentOffset, animated: false)
+      self.setPageOffset(self.currentPage)
     }
   }
 
@@ -85,5 +91,22 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
 
   func fullScreenComicDidTapClose(_ page: UVFullScreenViewerPage) {
     self.dismiss(animated: true, completion: nil)
+  }
+
+  func fullScreenComicDidTapPrev(_ page: UVFullScreenViewerPage) {
+    if self.currentPage > 0 {
+      self.setPageOffset(self.currentPage - 1)
+      // delegate methods will not be called when scrollView's contentOffset
+      // is set programmatically without animation, so I call it manually here...
+      self.scrollViewDidScroll(self.scrollView)
+    }
+  }
+
+  func fullScreenComicDidTapNext(_ page: UVFullScreenViewerPage) {
+    if self.currentPage < self.pages.count - 1 {
+      self.setPageOffset(self.currentPage + 1)
+      // ...and here.
+      self.scrollViewDidScroll(self.scrollView)
+    }
   }
 }
