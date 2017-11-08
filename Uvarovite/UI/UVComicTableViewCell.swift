@@ -9,8 +9,6 @@ class UVComicTableViewCell : UITableViewCell {
   @IBOutlet var altTextLabel: UVLabel!
   @IBOutlet var shareButtonSpinner: UIActivityIndicatorView!
 
-  private var dateFormatter: DateFormatter = DateFormatter()
-
   var comic: UVComic?
   var imageSize: CGSize?
 
@@ -38,7 +36,6 @@ class UVComicTableViewCell : UITableViewCell {
     self.altTextLabel.adjustsFontSizeToFitWidth = true
     self.altTextLabel.minimumScaleFactor = 0.33
 
-    self.dateFormatter.dateFormat = "yyyy-MM-dd"
     self.setFavorite(false)
 
     NotificationCenter.default.addObserver(forName: UVRootViewController.activityViewControllerDidShowNotification,
@@ -93,39 +90,9 @@ class UVComicTableViewCell : UITableViewCell {
 
   func updateWithComic(_ comic: UVComic) {
     self.comic = comic
-
-    func getAttributedStringWith(comicId: Int, title: String, date: Date?) -> NSAttributedString {
-      let attributedString = NSMutableAttributedString()
-
-      let comicIdString = NSAttributedString.init(string: "#\(comicId)  ",
-                                                  attributes: [
-                                                    .font : UIFont.systemFont(ofSize: 14),
-                                                    .foregroundColor : UIColor.lightGray,
-                                                    ])
-      attributedString.append(comicIdString)
-
-      let titleString = NSAttributedString.init(string: title,
-                                                attributes: [
-                                                  .font : UIFont.systemFont(ofSize: 20),
-                                                  .foregroundColor : UIColor.white,
-                                                  ])
-      attributedString.append(titleString)
-
-      if let date = date {
-        let dateString = NSAttributedString.init(string: "\n\(self.dateFormatter.string(from: date))",
-          attributes: [
-            .font : UIFont.systemFont(ofSize: 14),
-            .foregroundColor : UIColor.lightGray,
-            ])
-        attributedString.append(dateString)
-      }
-
-      return attributedString
-    }
-
-    self.infoLabel.attributedText = getAttributedStringWith(comicId: comic.id,
-                                                            title: comic.title ?? "",
-                                                            date: comic.date)
+    self.infoLabel.attributedText = UVComicPresenter.attributedStringWith(comicId: comic.id,
+                                                                          title: comic.title,
+                                                                          date: comic.date)
     self.altTextLabel.text = comic.altText
 
     var image = comic.image

@@ -14,7 +14,8 @@ enum UVActiveComicView {
 }
 
 // TODO: fix rotation issues.
-class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UVComicSharing {
+class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,
+                            UVComicSharing, UVFullScreenViewerDelegate {
   @IBOutlet var scrollView: UIScrollView!
   @IBOutlet var activeTabIndicator: UIView!
   @IBOutlet var activeTabIndicatorPositionConstraint: NSLayoutConstraint!
@@ -82,6 +83,12 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     self.scrollView.setContentOffset(contentOffset, animated: true)
   }
 
+  func showFullScreenComicViewerAt(index: Int) {
+    let fullScreenViewer = UVFullScreenViewer(currentPage: index)
+    fullScreenViewer.delegate = self
+    self.present(fullScreenViewer, animated: true, completion: nil)
+  }
+
   @IBAction func didTapSettings(sender: UIButton) {
     let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     menu.addAction(UIAlertAction(title: "Refresh Comics", style: .default, handler: { _ in
@@ -146,6 +153,12 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     }
   }
 
+  func calculateFooterRevealPercentage() -> Double {
+    let bottomPoint = self.comicTableView.frame.size.height + self.comicTableView.contentOffset.y
+    let footerHeight = self.comicTableViewFooter.frame.size.height
+    return Double((bottomPoint - self.comicTableView.contentSize.height + footerHeight) / footerHeight)
+  }
+
   private func clamp(_ value: CGFloat, _ minValue: CGFloat, _ maxValue: CGFloat) -> CGFloat {
     return min(maxValue, max(value, minValue))
   }
@@ -164,10 +177,14 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     return cell
   }
 
-  func calculateFooterRevealPercentage() -> Double {
-    let bottomPoint = self.comicTableView.frame.size.height + self.comicTableView.contentOffset.y
-    let footerHeight = self.comicTableViewFooter.frame.size.height
-    return Double((bottomPoint - self.comicTableView.contentSize.height + footerHeight) / footerHeight)
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let comicIndex = indexPath.row
+    self.showFullScreenComicViewerAt(index: comicIndex)
+
+    let delayTime = DispatchTime.now() + .milliseconds(500)
+    DispatchQueue.main.asyncAfter(deadline: delayTime) {
+      tableView.deselectRow(at: indexPath, animated: false)
+    }
   }
 
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -246,6 +263,18 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     UIView.animate(withDuration: 0.2) {
       self.view.layoutIfNeeded()
     }
+  }
+
+  // MARK: - UVFullScreenViewerDelegate
+
+  func fullScreenViewer(_ viewer: UVFullScreenViewer, didScrollToPage page: Int) {
+    if page >= self.comicManager.numComics() {
+      // TODO: process error
+      return
+    }
+
+    let indexPath = IndexPath(row: page, section: 0)
+    self.comicTableView.scrollToRow(at: indexPath, at: .middle, animated: false)
   }
 
   // MARK: - UVComicSharing
