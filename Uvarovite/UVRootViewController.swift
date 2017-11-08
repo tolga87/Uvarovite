@@ -35,6 +35,8 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
 
   private let favoritesController = UVFavoritesController()
 
+  var url: URL?  // URL for the full screen web viewer that is about to be displayed
+
   var headerMaxHeight: CGFloat = 0
   var comicManager = UVComicManager.sharedInstance
   var comicLoadStatus = UVComicTableViewLoadStatus.initial
@@ -90,6 +92,10 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   }
 
   @IBAction func didTapSettings(sender: UIButton) {
+    //~TA
+    self.showWebViewer(withUrl: URL(string: "https://www.reddit.com"))
+    return
+
     let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     menu.addAction(UIAlertAction(title: "Refresh Comics", style: .default, handler: { _ in
       // Refresh
@@ -275,6 +281,28 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
 
     let indexPath = IndexPath(row: page, section: 0)
     self.comicTableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+  }
+
+  func showWebViewer(withUrl: URL?) {
+//    guard let withUrl = withUrl else {
+//      // don't present a web viewer if we don't have a URL.
+//      // this would cause a crash, and it wouldn't make sense anyway.
+//      return
+//    }
+//
+//    self.url = withUrl
+//    self.performSegue(withIdentifier: "ShowWebViewer", sender: self)
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let webViewer = segue.destination as? UVFullScreenWebViewer, let url = self.url {
+      webViewer.url = url
+      self.url = nil
+    }
+  }
+
+  func fullScreenViewer(_ viewer: UVFullScreenViewer, didRequestUrl url: URL) {
+    self.showWebViewer(withUrl: url)
   }
 
   // MARK: - UVComicSharing

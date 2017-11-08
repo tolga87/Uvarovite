@@ -3,6 +3,7 @@ import UIKit
 
 protocol UVFullScreenViewerDelegate {
   func fullScreenViewer(_ viewer: UVFullScreenViewer, didScrollToPage page: Int)
+  func fullScreenViewer(_ viewer: UVFullScreenViewer, didRequestUrl url: URL)
 }
 
 
@@ -108,5 +109,9 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
       // ...and here.
       self.scrollViewDidScroll(self.scrollView)
     }
+  }
+
+  func fullScreenComic(_ comic: UVFullScreenViewerPage, didRequestUrl url: URL) {
+    self.delegate?.fullScreenViewer(self, didRequestUrl: url)
   }
 }

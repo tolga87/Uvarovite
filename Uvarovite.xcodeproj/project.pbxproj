@@ -29,6 +29,9 @@
 		FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
 		FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
 		FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */; };
+		FD8E8C671FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8E8C661FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift */; };
+		FD8E8C681FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8E8C661FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift */; };
+		FD8E8C691FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8E8C661FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift */; };
 		FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD96D9FE1F8AA27100317385 /* UVLabel.swift */; };
 		FD96DA001F8AA27100317385 /* UVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD96D9FE1F8AA27100317385 /* UVLabel.swift */; };
 		FD96DA011F8AA27100317385 /* UVLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD96D9FE1F8AA27100317385 /* UVLabel.swift */; };
@@ -69,6 +72,9 @@
 		FDADBC7F1F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */; };
 		FDADBC801F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */; };
 		FDADBC811F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */; };
+		FDBF897B1FB3BE8100E75AB3 /* down-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBF897A1FB3BE8000E75AB3 /* down-100.png */; };
+		FDBF897C1FB3BE8100E75AB3 /* down-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBF897A1FB3BE8000E75AB3 /* down-100.png */; };
+		FDBF897D1FB3BE8100E75AB3 /* down-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBF897A1FB3BE8000E75AB3 /* down-100.png */; };
 		FDBFC6931FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */; };
 		FDBFC6941FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */; };
 		FDBFC6951FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */; };
@@ -119,6 +125,7 @@
 		FD2C653A1F9D92B30037BA0C /* star-filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-filled-50.png"; sourceTree = "<group>"; };
 		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
 		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
+		FD8E8C661FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenWebViewer.swift; sourceTree = "<group>"; };
 		FD96D9FE1F8AA27100317385 /* UVLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVLabel.swift; sourceTree = "<group>"; };
 		FD9A23FE1F80437500BA1038 /* Uvarovite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uvarovite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD9A24011F80437500BA1038 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +150,7 @@
 		FD9F12B41FB2CC59000ECBAF /* next-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-100.png"; sourceTree = "<group>"; };
 		FD9F12B51FB2CC59000ECBAF /* prev-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prev-100.png"; sourceTree = "<group>"; };
 		FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFavoritesManager.swift; sourceTree = "<group>"; };
+		FDBF897A1FB3BE8000E75AB3 /* down-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-100.png"; sourceTree = "<group>"; };
 		FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenViewer.swift; sourceTree = "<group>"; };
 		FDBFC6971FB0E3370035EE68 /* UVFullScreenViewerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenViewerPage.swift; sourceTree = "<group>"; };
 		FDBFC69B1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UVFullScreenViewerPage.xib; sourceTree = "<group>"; };
@@ -182,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				FD9F12A81FB2CAFE000ECBAF /* alt-100.png */,
+				FDBF897A1FB3BE8000E75AB3 /* down-100.png */,
 				FD9F12AC1FB2CB90000ECBAF /* explain-100.png */,
 				FD9F12B41FB2CC59000ECBAF /* next-100.png */,
 				FD9F12B51FB2CC59000ECBAF /* prev-100.png */,
@@ -206,6 +215,7 @@
 				FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */,
 				FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */,
 				FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */,
+				FD8E8C661FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -243,8 +253,8 @@
 		FD9A24001F80437500BA1038 /* Uvarovite */ = {
 			isa = PBXGroup;
 			children = (
-				FDD3022A1F8FF13500519C29 /* Manager */,
 				FD9A24051F80437500BA1038 /* Main.storyboard */,
+				FDD3022A1F8FF13500519C29 /* Manager */,
 				FD5CC67C1F8082B2006F4A27 /* UI */,
 				FD9A242F1F80443700BA1038 /* Model */,
 				FD9A24011F80437500BA1038 /* AppDelegate.swift */,
@@ -420,6 +430,7 @@
 				FD2C653B1F9D92B40037BA0C /* star-50.png in Resources */,
 				FD9A24091F80437500BA1038 /* Assets.xcassets in Resources */,
 				FDEDEB091F9856E900DF3F7A /* image-na-icon.png in Resources */,
+				FDBF897B1FB3BE8100E75AB3 /* down-100.png in Resources */,
 				FD9F12B61FB2CC59000ECBAF /* next-100.png in Resources */,
 				FD9F12A11FB2C9C1000ECBAF /* share-100.png in Resources */,
 				FDD302341F9177B100519C29 /* more-50.png in Resources */,
@@ -447,6 +458,7 @@
 				FD9F12A21FB2C9C1000ECBAF /* share-100.png in Resources */,
 				FDBFC69D1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */,
 				FDD302351F9177B100519C29 /* more-50.png in Resources */,
+				FDBF897C1FB3BE8100E75AB3 /* down-100.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +478,7 @@
 				FD9F12A31FB2C9C1000ECBAF /* share-100.png in Resources */,
 				FDBFC69E1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */,
 				FDD302361F9177B100519C29 /* more-50.png in Resources */,
+				FDBF897D1FB3BE8100E75AB3 /* down-100.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +493,7 @@
 				FDADBC7F1F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */,
 				FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FD8E8C671FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
 				FDBFC6931FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD2C65361F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
@@ -500,6 +514,7 @@
 			files = (
 				FD2C652F1F9D85800037BA0C /* UVFavoritesController.swift in Sources */,
 				FDBFC6A11FB0F9D20035EE68 /* UVComicPresenter.swift in Sources */,
+				FD8E8C681FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
 				FDBFC6991FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */,
 				FD2C65371F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD9A24321F80448B00BA1038 /* UVComic.swift in Sources */,
@@ -521,6 +536,7 @@
 			files = (
 				FD2C65301F9D85800037BA0C /* UVFavoritesController.swift in Sources */,
 				FDBFC6A21FB0F9D20035EE68 /* UVComicPresenter.swift in Sources */,
+				FD8E8C691FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
 				FDBFC69A1FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */,
 				FD2C65381F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD9A24331F80448B00BA1038 /* UVComic.swift in Sources */,
@@ -685,7 +701,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 286BN4BY9J;
 				INFOPLIST_FILE = Uvarovite/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tolgaakin.Uvarovite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -701,7 +717,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 286BN4BY9J;
 				INFOPLIST_FILE = Uvarovite/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tolgaakin.Uvarovite;
 				PRODUCT_NAME = "$(TARGET_NAME)";

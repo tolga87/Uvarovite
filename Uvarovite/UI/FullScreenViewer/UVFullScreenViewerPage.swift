@@ -5,6 +5,7 @@ protocol UVFullScreenComicDelegate {
   func fullScreenComicDidTapClose(_ page: UVFullScreenViewerPage)
   func fullScreenComicDidTapPrev(_ page: UVFullScreenViewerPage)
   func fullScreenComicDidTapNext(_ page: UVFullScreenViewerPage)
+  func fullScreenComic(_ comic: UVFullScreenViewerPage, didRequestUrl url: URL)
 }
 
 class UVFullScreenViewerPage : UIView {
@@ -85,6 +86,11 @@ class UVFullScreenViewerPage : UIView {
 
   @IBAction func didTapAltText(sender: UIButton) {
     self.setAltTextVisible(!self.isAltTextVisible())
+  }
+
+  @IBAction func didTapExplain(sender: UIButton) {
+    let url = URL(string: "http://www.explainxkcd.com/wiki/index.php/1913")!
+    self.delegate?.fullScreenComic(self, didRequestUrl: url)
   }
 
   // TODO: eliminate redundancy

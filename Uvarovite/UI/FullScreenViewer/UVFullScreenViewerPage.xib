@@ -116,6 +116,9 @@
                             <state key="normal" image="explain-100.png">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="didTapExplainWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="ddO-Qp-NYD"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4U-Zd-PU2">
                             <rect key="frame" x="337" y="10" width="30" height="30"/>
