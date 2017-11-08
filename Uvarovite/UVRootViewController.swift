@@ -290,7 +290,8 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     let sharingManager = UVSharingManager.sharedInstance
     let activityViewController = sharingManager.activityViewControllerFor(comic)
 
-    self.present(activityViewController, animated: true) {
+    let presentingViewController = self.presentedViewController ?? self
+    presentingViewController.present(activityViewController, animated: true) {
       NotificationCenter.default.post(name: UVRootViewController.activityViewControllerDidShowNotification,
                                       object: self,
                                       userInfo: nil)

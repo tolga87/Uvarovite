@@ -13,6 +13,7 @@ class UVFullScreenViewerPage : UIView {
       self.imageView.image = comic?.image
       self.updateComicInfo()
       self.updateImageSize()
+      self.updateFavoriteStatus()
     }
   }
 
@@ -44,6 +45,13 @@ class UVFullScreenViewerPage : UIView {
     view.altTextLabel = UVComicPresenter.altTextLabel()
     view.altTextLabel.alpha = 0
     view.addSubview(view.altTextLabel)
+    NotificationCenter.default.addObserver(forName: UVFavoritesManager.favoritesUpdatedNotification,
+                                           object: nil,
+                                           queue: OperationQueue.main) { (notification: Notification) in
+                                            view.updateFavoriteStatus()
+    }
+
+
     return view
   }
 
@@ -55,8 +63,44 @@ class UVFullScreenViewerPage : UIView {
     self.delegate?.fullScreenComicDidTapNext(self)
   }
 
+  @IBAction func didTapFavorite(sender: UIButton) {
+    guard let comicId = self.comic?.id else {
+      return
+    }
+
+    let favoritesManager = UVFavoritesManager.sharedInstance
+    let isFavorite = favoritesManager.isFavorite(id: comicId)
+    if isFavorite {
+      favoritesManager.unfavoriteComic(id: comicId)
+    } else {
+      favoritesManager.favoriteComic(id: comicId)
+    }
+  }
+
+  @IBAction func didTapShare(sender: UIButton) {
+    if let comic = self.comic {
+      comic.shareDelegate?.comicDidRequestShare(comic)
+    }
+  }
+
   @IBAction func didTapAltText(sender: UIButton) {
     self.setAltTextVisible(!self.isAltTextVisible())
+  }
+
+  // TODO: eliminate redundancy
+  private func updateFavoriteStatus() {
+    if let comicId = self.comic?.id {
+      let isFavorite = UVFavoritesManager.sharedInstance.isFavorite(id: comicId)
+      self.setFavorite(isFavorite)
+    } else {
+      self.setFavorite(false)
+    }
+  }
+
+  private func setFavorite(_ isFavorite: Bool) {
+    let starImageName = (isFavorite ? "star-filled-100" : "star-100")
+    self.favoriteButton?.setImage(UIImage.init(named: starImageName),
+                                  for: UIControlState.normal)
   }
 
   func isAltTextVisible() -> Bool {

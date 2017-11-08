@@ -86,6 +86,9 @@
                             <rect key="frame" x="57" y="12" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="star-100.png"/>
+                            <connections>
+                                <action selector="didTapFavoriteWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="FDV-Wg-YKi"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbV-5Q-FrH">
                             <rect key="frame" x="116" y="10" width="30" height="30"/>
@@ -93,6 +96,9 @@
                             <state key="normal" image="share-100.png">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="didTapShareWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="cKV-PK-qZt"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLe-0H-kzh">
                             <rect key="frame" x="178" y="10" width="30" height="30"/>
