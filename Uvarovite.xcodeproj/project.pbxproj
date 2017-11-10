@@ -75,15 +75,15 @@
 		FDBF897B1FB3BE8100E75AB3 /* down-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBF897A1FB3BE8000E75AB3 /* down-100.png */; };
 		FDBF897C1FB3BE8100E75AB3 /* down-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBF897A1FB3BE8000E75AB3 /* down-100.png */; };
 		FDBF897D1FB3BE8100E75AB3 /* down-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBF897A1FB3BE8000E75AB3 /* down-100.png */; };
-		FDBFC6931FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */; };
-		FDBFC6941FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */; };
-		FDBFC6951FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */; };
-		FDBFC6981FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6971FB0E3370035EE68 /* UVFullScreenViewerPage.swift */; };
-		FDBFC6991FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6971FB0E3370035EE68 /* UVFullScreenViewerPage.swift */; };
-		FDBFC69A1FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6971FB0E3370035EE68 /* UVFullScreenViewerPage.swift */; };
-		FDBFC69C1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBFC69B1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib */; };
-		FDBFC69D1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBFC69B1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib */; };
-		FDBFC69E1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBFC69B1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib */; };
+		FDBFC6931FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenComicViewer.swift */; };
+		FDBFC6941FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenComicViewer.swift */; };
+		FDBFC6951FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6921FB0DC500035EE68 /* UVFullScreenComicViewer.swift */; };
+		FDBFC6981FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6971FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift */; };
+		FDBFC6991FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6971FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift */; };
+		FDBFC69A1FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC6971FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift */; };
+		FDBFC69C1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBFC69B1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib */; };
+		FDBFC69D1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBFC69B1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib */; };
+		FDBFC69E1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBFC69B1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib */; };
 		FDBFC6A01FB0F9D20035EE68 /* UVComicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC69F1FB0F9D20035EE68 /* UVComicPresenter.swift */; };
 		FDBFC6A11FB0F9D20035EE68 /* UVComicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC69F1FB0F9D20035EE68 /* UVComicPresenter.swift */; };
 		FDBFC6A21FB0F9D20035EE68 /* UVComicPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBFC69F1FB0F9D20035EE68 /* UVComicPresenter.swift */; };
@@ -151,9 +151,9 @@
 		FD9F12B51FB2CC59000ECBAF /* prev-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "prev-100.png"; sourceTree = "<group>"; };
 		FDADBC7E1F9EE831001F5D9E /* UVFavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFavoritesManager.swift; sourceTree = "<group>"; };
 		FDBF897A1FB3BE8000E75AB3 /* down-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-100.png"; sourceTree = "<group>"; };
-		FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenViewer.swift; sourceTree = "<group>"; };
-		FDBFC6971FB0E3370035EE68 /* UVFullScreenViewerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenViewerPage.swift; sourceTree = "<group>"; };
-		FDBFC69B1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UVFullScreenViewerPage.xib; sourceTree = "<group>"; };
+		FDBFC6921FB0DC500035EE68 /* UVFullScreenComicViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenComicViewer.swift; sourceTree = "<group>"; };
+		FDBFC6971FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenComicViewerPage.swift; sourceTree = "<group>"; };
+		FDBFC69B1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UVFullScreenComicViewerPage.xib; sourceTree = "<group>"; };
 		FDBFC69F1FB0F9D20035EE68 /* UVComicPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicPresenter.swift; sourceTree = "<group>"; };
 		FDD3022B1F8FF14300519C29 /* UVSharingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVSharingManager.swift; sourceTree = "<group>"; };
 		FDD3022F1F91749700519C29 /* chevron-up-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-up-50.png"; sourceTree = "<group>"; };
@@ -297,9 +297,9 @@
 		FDBFC6961FB0E3210035EE68 /* FullScreenViewer */ = {
 			isa = PBXGroup;
 			children = (
-				FDBFC6921FB0DC500035EE68 /* UVFullScreenViewer.swift */,
-				FDBFC6971FB0E3370035EE68 /* UVFullScreenViewerPage.swift */,
-				FDBFC69B1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib */,
+				FDBFC6921FB0DC500035EE68 /* UVFullScreenComicViewer.swift */,
+				FDBFC6971FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift */,
+				FDBFC69B1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib */,
 			);
 			path = FullScreenViewer;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 				FD2C4DF11F884FB800CE9203 /* placeholder-359x175.png in Resources */,
 				FD9F12B11FB2CC0D000ECBAF /* star-filled-100.png in Resources */,
 				FD9A240C1F80437500BA1038 /* LaunchScreen.storyboard in Resources */,
-				FDBFC69C1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */,
+				FDBFC69C1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib in Resources */,
 				FD2C653B1F9D92B40037BA0C /* star-50.png in Resources */,
 				FD9A24091F80437500BA1038 /* Assets.xcassets in Resources */,
 				FDEDEB091F9856E900DF3F7A /* image-na-icon.png in Resources */,
@@ -456,7 +456,7 @@
 				FD9F12BA1FB2CC59000ECBAF /* prev-100.png in Resources */,
 				FD9F12B21FB2CC0D000ECBAF /* star-filled-100.png in Resources */,
 				FD9F12A21FB2C9C1000ECBAF /* share-100.png in Resources */,
-				FDBFC69D1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */,
+				FDBFC69D1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib in Resources */,
 				FDD302351F9177B100519C29 /* more-50.png in Resources */,
 				FDBF897C1FB3BE8100E75AB3 /* down-100.png in Resources */,
 			);
@@ -476,7 +476,7 @@
 				FD9F12BB1FB2CC59000ECBAF /* prev-100.png in Resources */,
 				FD9F12B31FB2CC0D000ECBAF /* star-filled-100.png in Resources */,
 				FD9F12A31FB2C9C1000ECBAF /* share-100.png in Resources */,
-				FDBFC69E1FB0E3D80035EE68 /* UVFullScreenViewerPage.xib in Resources */,
+				FDBFC69E1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib in Resources */,
 				FDD302361F9177B100519C29 /* more-50.png in Resources */,
 				FDBF897D1FB3BE8100E75AB3 /* down-100.png in Resources */,
 			);
@@ -494,12 +494,12 @@
 				FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
 				FD8E8C671FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
-				FDBFC6931FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */,
+				FDBFC6931FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD2C65361F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */,
 				FDD3022C1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
-				FDBFC6981FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */,
+				FDBFC6981FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */,
 				FD9A24041F80437500BA1038 /* UVRootViewController.swift in Sources */,
 				FD2C65321F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
 				FD9A24021F80437500BA1038 /* AppDelegate.swift in Sources */,
@@ -515,7 +515,7 @@
 				FD2C652F1F9D85800037BA0C /* UVFavoritesController.swift in Sources */,
 				FDBFC6A11FB0F9D20035EE68 /* UVComicPresenter.swift in Sources */,
 				FD8E8C681FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
-				FDBFC6991FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */,
+				FDBFC6991FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */,
 				FD2C65371F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD9A24321F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
@@ -526,7 +526,7 @@
 				FD5CC6831F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24171F80437500BA1038 /* UvaroviteTests.swift in Sources */,
 				FD96DA001F8AA27100317385 /* UVLabel.swift in Sources */,
-				FDBFC6941FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */,
+				FDBFC6941FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +537,7 @@
 				FD2C65301F9D85800037BA0C /* UVFavoritesController.swift in Sources */,
 				FDBFC6A21FB0F9D20035EE68 /* UVComicPresenter.swift in Sources */,
 				FD8E8C691FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
-				FDBFC69A1FB0E3370035EE68 /* UVFullScreenViewerPage.swift in Sources */,
+				FDBFC69A1FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */,
 				FD2C65381F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
 				FD9A24331F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
@@ -548,7 +548,7 @@
 				FD5CC6841F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD9A24221F80437500BA1038 /* UvaroviteUITests.swift in Sources */,
 				FD96DA011F8AA27100317385 /* UVLabel.swift in Sources */,
-				FDBFC6951FB0DC500035EE68 /* UVFullScreenViewer.swift in Sources */,
+				FDBFC6951FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,15 +1,15 @@
 import Foundation
 import UIKit
 
-protocol UVFullScreenViewerDelegate {
-  func fullScreenViewer(_ viewer: UVFullScreenViewer, didScrollToPage page: Int)
+protocol UVFullScreenComicViewerDelegate {
+  func fullScreenViewer(_ viewer: UVFullScreenComicViewer, didScrollToPage page: Int)
 }
 
 
-class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScrollViewDelegate {
-  var delegate: UVFullScreenViewerDelegate?
+class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIScrollViewDelegate {
+  var delegate: UVFullScreenComicViewerDelegate?
   var scrollView: UIScrollView
-  var pages: [UVFullScreenViewerPage]
+  var pages: [UVFullScreenComicViewerPage]
   let comicManager = UVComicManager.sharedInstance
   var currentPage = 0
   var explainUrl: URL?  // explain URL that is about to be displayed
@@ -68,7 +68,7 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
 
     let numComics = self.comicManager.numComics()
     for i in 0..<numComics {
-      let page = UVFullScreenViewerPage.instanceFromNib()
+      let page = UVFullScreenComicViewerPage.instanceFromNib()
       page.delegate = self
       page.comic = self.comicManager.comicAt(i)
       pages.append(page)
@@ -76,11 +76,11 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
     }
   }
 
-  func fullScreenComicDidTapClose(_ page: UVFullScreenViewerPage) {
+  func fullScreenComicDidTapClose(_ page: UVFullScreenComicViewerPage) {
     self.dismiss(animated: true, completion: nil)
   }
 
-  func fullScreenComicDidTapPrev(_ page: UVFullScreenViewerPage) {
+  func fullScreenComicDidTapPrev(_ page: UVFullScreenComicViewerPage) {
     if self.currentPage > 0 {
       self.setPageOffset(self.currentPage - 1)
       // delegate methods will not be called when scrollView's contentOffset
@@ -89,7 +89,7 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
     }
   }
 
-  func fullScreenComicDidTapNext(_ page: UVFullScreenViewerPage) {
+  func fullScreenComicDidTapNext(_ page: UVFullScreenComicViewerPage) {
     if self.currentPage < self.pages.count - 1 {
       self.setPageOffset(self.currentPage + 1)
       // ...and here.
@@ -97,7 +97,7 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
     }
   }
 
-  func fullScreenComic(_ comic: UVFullScreenViewerPage, didRequestUrl url: URL) {
+  func fullScreenComic(_ comic: UVFullScreenComicViewerPage, didRequestUrl url: URL) {
     self.explainUrl = url
     self.explainComic = comic.comic
     self.performSegue(withIdentifier: "ShowWebViewer", sender: self)

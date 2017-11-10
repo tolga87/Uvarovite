@@ -2,13 +2,13 @@ import Foundation
 import UIKit
 
 protocol UVFullScreenComicDelegate {
-  func fullScreenComicDidTapClose(_ page: UVFullScreenViewerPage)
-  func fullScreenComicDidTapPrev(_ page: UVFullScreenViewerPage)
-  func fullScreenComicDidTapNext(_ page: UVFullScreenViewerPage)
-  func fullScreenComic(_ comic: UVFullScreenViewerPage, didRequestUrl url: URL)
+  func fullScreenComicDidTapClose(_ page: UVFullScreenComicViewerPage)
+  func fullScreenComicDidTapPrev(_ page: UVFullScreenComicViewerPage)
+  func fullScreenComicDidTapNext(_ page: UVFullScreenComicViewerPage)
+  func fullScreenComic(_ comic: UVFullScreenComicViewerPage, didRequestUrl url: URL)
 }
 
-class UVFullScreenViewerPage : UIView {
+class UVFullScreenComicViewerPage : UIView {
   var comic: UVComic? {
     didSet {
       self.imageView.image = comic?.image
@@ -39,8 +39,8 @@ class UVFullScreenViewerPage : UIView {
   @IBOutlet var nextButton: UIButton!
 
 
-  class func instanceFromNib() -> UVFullScreenViewerPage {
-    let view = UINib(nibName: "UVFullScreenViewerPage", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UVFullScreenViewerPage
+  class func instanceFromNib() -> UVFullScreenComicViewerPage {
+    let view = UINib(nibName: "UVFullScreenViewerPage", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UVFullScreenComicViewerPage
     view.imageView.contentMode = .scaleAspectFit
     view.footerView.backgroundColor = .darkBlue
     view.altTextLabel = UVComicPresenter.altTextLabel()

@@ -15,7 +15,7 @@ enum UVActiveComicView {
 
 // TODO: fix rotation issues.
 class UVRootViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,
-                            UVComicSharing, UVFullScreenViewerDelegate {
+                            UVComicSharing, UVFullScreenComicViewerDelegate {
   @IBOutlet var scrollView: UIScrollView!
   @IBOutlet var activeTabIndicator: UIView!
   @IBOutlet var activeTabIndicatorPositionConstraint: NSLayoutConstraint!
@@ -266,9 +266,9 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     }
   }
 
-  // MARK: - UVFullScreenViewerDelegate
+  // MARK: - UVFullScreenComicViewerDelegate
 
-  func fullScreenViewer(_ viewer: UVFullScreenViewer, didScrollToPage page: Int) {
+  func fullScreenViewer(_ viewer: UVFullScreenComicViewer, didScrollToPage page: Int) {
     if page >= self.comicManager.numComics() {
       // TODO: process error
       return
@@ -291,7 +291,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
       }
 
     case "ShowFullScreenComicViewer":
-      if let comicViewer = segue.destination as? UVFullScreenViewer, let index = self.selectedComicIndex {
+      if let comicViewer = segue.destination as? UVFullScreenComicViewer, let index = self.selectedComicIndex {
         comicViewer.delegate = self
         comicViewer.currentPage = index
       }

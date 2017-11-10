@@ -500,10 +500,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
-        <!--Full Screen Viewer-->
+        <!--Full Screen Comic Viewer-->
         <scene sceneID="NaC-y0-YJM">
             <objects>
-                <viewController id="cXt-cZ-b0E" customClass="UVFullScreenViewer" customModule="Uvarovite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cXt-cZ-b0E" customClass="UVFullScreenComicViewer" customModule="Uvarovite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L88-KL-VtY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
