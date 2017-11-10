@@ -493,12 +493,30 @@
                         <outlet property="headerView" destination="bnD-sD-Onm" id="ghJ-t5-PdH"/>
                         <outlet property="loadMoreLabel" destination="Std-V9-bv2" id="81z-dS-sv0"/>
                         <outlet property="scrollView" destination="Cim-lO-wrM" id="KsN-yg-WS9"/>
-                        <segue destination="5Jt-Ok-Oyd" kind="presentation" identifier="ShowWebViewer" id="yFH-WW-C73"/>
+                        <segue destination="cXt-cZ-b0E" kind="show" identifier="ShowFullScreenComicViewer" id="L8U-tY-qS7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--Full Screen Viewer-->
+        <scene sceneID="NaC-y0-YJM">
+            <objects>
+                <viewController id="cXt-cZ-b0E" customClass="UVFullScreenViewer" customModule="Uvarovite" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L88-KL-VtY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="EaB-Zd-kjp"/>
+                    </view>
+                    <connections>
+                        <segue destination="5Jt-Ok-Oyd" kind="show" identifier="ShowWebViewer" id="32h-0p-pPd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0uN-py-QGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="959" y="133"/>
         </scene>
         <!--Full Screen Web Viewer-->
         <scene sceneID="mUK-Dq-TTR">
@@ -530,14 +548,24 @@
                                             <constraint firstAttribute="height" constant="2" id="tae-Vr-BgO"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXg-Gy-v44" userLabel="WebViewTitle">
+                                        <rect key="frame" x="44" y="7.5" width="287" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="vNq-mF-Fih" firstAttribute="leading" secondItem="KTG-sW-yaW" secondAttribute="leading" constant="7" id="0xH-HO-WzG"/>
                                     <constraint firstAttribute="bottom" secondItem="toM-Vl-7XZ" secondAttribute="bottom" id="Fg8-0g-7za"/>
                                     <constraint firstAttribute="height" constant="44" id="NM8-h0-bUZ"/>
                                     <constraint firstItem="vNq-mF-Fih" firstAttribute="centerY" secondItem="KTG-sW-yaW" secondAttribute="centerY" id="QUL-xC-MXp"/>
+                                    <constraint firstItem="bXg-Gy-v44" firstAttribute="leading" secondItem="vNq-mF-Fih" secondAttribute="trailing" constant="7" id="gUa-rk-pYg"/>
+                                    <constraint firstItem="bXg-Gy-v44" firstAttribute="centerY" secondItem="KTG-sW-yaW" secondAttribute="centerY" id="gsD-Nt-NYV"/>
+                                    <constraint firstAttribute="trailing" secondItem="bXg-Gy-v44" secondAttribute="trailing" constant="44" id="h9Q-oD-tkE"/>
                                     <constraint firstItem="toM-Vl-7XZ" firstAttribute="leading" secondItem="KTG-sW-yaW" secondAttribute="leading" id="rv1-Oj-Dha"/>
+                                    <constraint firstItem="bXg-Gy-v44" firstAttribute="height" secondItem="vNq-mF-Fih" secondAttribute="height" id="uL2-OH-Oll"/>
                                 </constraints>
                             </view>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WhX-fB-3Nt">
@@ -565,12 +593,13 @@
                         <outlet property="headerView" destination="KTG-sW-yaW" id="U3Z-cb-rNt"/>
                         <outlet property="progressIndicatorView" destination="toM-Vl-7XZ" id="x47-CF-wuB"/>
                         <outlet property="progressIndicatorWidthConstraint" destination="J4l-wz-rJJ" id="lmL-Fo-0iB"/>
+                        <outlet property="titleLabel" destination="bXg-Gy-v44" id="DlY-PY-LKg"/>
                         <outlet property="webView" destination="WhX-fB-3Nt" id="yjH-eC-2ps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Q8-2o-aZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="132.68365817091455"/>
+            <point key="canvasLocation" x="957.60000000000002" y="915.29235382308855"/>
         </scene>
     </scenes>
     <resources>

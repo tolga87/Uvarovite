@@ -3,7 +3,6 @@ import UIKit
 
 protocol UVFullScreenViewerDelegate {
   func fullScreenViewer(_ viewer: UVFullScreenViewer, didScrollToPage page: Int)
-  func fullScreenViewer(_ viewer: UVFullScreenViewer, didRequestUrl url: URL)
 }
 
 
@@ -13,30 +12,17 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
   var pages: [UVFullScreenViewerPage]
   let comicManager = UVComicManager.sharedInstance
   var currentPage = 0
+  var explainUrl: URL?  // explain URL that is about to be displayed
+  var explainComic: UVComic?  // comic that is about to be explained
 
-  init() {
+  required init?(coder aDecoder: NSCoder) {
     self.scrollView = UIScrollView()
     self.scrollView.isPagingEnabled = true
     self.scrollView.bounces = true
     self.pages = []
 
-    super.init(nibName: nil, bundle: nil)
+    super.init(coder: aDecoder)
     self.scrollView.delegate = self
-  }
-
-  convenience init(currentPage: Int) {
-    var page = currentPage
-    let numPages = UVComicManager.sharedInstance.numComics()
-    if currentPage < 0 || currentPage >= numPages {
-      page = 0
-    }
-
-    self.init()
-    self.currentPage = page
-  }
-
-  required convenience init?(coder aDecoder: NSCoder) {
-    self.init()
   }
 
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -112,6 +98,19 @@ class UVFullScreenViewer : UIViewController, UVFullScreenComicDelegate, UIScroll
   }
 
   func fullScreenComic(_ comic: UVFullScreenViewerPage, didRequestUrl url: URL) {
-    self.delegate?.fullScreenViewer(self, didRequestUrl: url)
+    self.explainUrl = url
+    self.explainComic = comic.comic
+    self.performSegue(withIdentifier: "ShowWebViewer", sender: self)
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let webViewer = segue.destination as? UVFullScreenWebViewer, let url = self.explainUrl else {
+      return
+    }
+
+    webViewer.comic = self.explainComic
+    webViewer.url = url
+    self.explainComic = nil
+    self.explainUrl = nil
   }
 }

@@ -34,6 +34,23 @@ class UVComicPresenter {
     return attributedString
   }
 
+  class func attributedStringForExplainerTitle(comic: UVComic) -> NSAttributedString {
+    var string = "Explain #\(comic.id)"
+    if let comicTitle = comic.title {
+      string += " - \"\(comicTitle)\""
+    }
+
+    let attrString = NSMutableAttributedString(string: string)
+    let entireString = string as NSString
+    let comicIdString = "#\(comic.id)"
+    attrString.addAttributes([.font : UIFont.systemFont(ofSize: 14),
+                              .foregroundColor : UIColor.lightGray,
+                              ],
+                             range: entireString.range(of: comicIdString))
+
+    return attrString
+  }
+
   class func altTextLabel() -> UVLabel {
     let label = UVLabel()
     label.numberOfLines = 0

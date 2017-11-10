@@ -89,7 +89,12 @@ class UVFullScreenViewerPage : UIView {
   }
 
   @IBAction func didTapExplain(sender: UIButton) {
-    let url = URL(string: "http://www.explainxkcd.com/wiki/index.php/1913")!
+    guard let comicId = self.comic?.id else {
+      return
+    }
+
+    let urlString = "http://www.explainxkcd.com/wiki/index.php/\(comicId)"
+    let url = URL(string: urlString)!
     self.delegate?.fullScreenComic(self, didRequestUrl: url)
   }
 

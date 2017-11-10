@@ -35,7 +35,8 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
 
   private let favoritesController = UVFavoritesController()
 
-  var url: URL?  // URL for the full screen web viewer that is about to be displayed
+  private var selectedComicIndex: Int?  // index of the comic for which the full screen viewer is about to be displayed
+  private var url: URL?                 // URL for the full screen web viewer that is about to be displayed
 
   var headerMaxHeight: CGFloat = 0
   var comicManager = UVComicManager.sharedInstance
@@ -85,17 +86,11 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     self.scrollView.setContentOffset(contentOffset, animated: true)
   }
 
-  func showFullScreenComicViewerAt(index: Int) {
-    let fullScreenViewer = UVFullScreenViewer(currentPage: index)
-    fullScreenViewer.delegate = self
-    self.present(fullScreenViewer, animated: true, completion: nil)
+  func showFullScreenComicViewer() {
+    self.performSegue(withIdentifier: "ShowFullScreenComicViewer", sender: nil)
   }
 
   @IBAction func didTapSettings(sender: UIButton) {
-    //~TA
-    self.showWebViewer(withUrl: URL(string: "https://www.reddit.com"))
-    return
-
     let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     menu.addAction(UIAlertAction(title: "Refresh Comics", style: .default, handler: { _ in
       // Refresh
@@ -184,8 +179,8 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let comicIndex = indexPath.row
-    self.showFullScreenComicViewerAt(index: comicIndex)
+    self.selectedComicIndex = indexPath.row
+    self.showFullScreenComicViewer()
 
     let delayTime = DispatchTime.now() + .milliseconds(500)
     DispatchQueue.main.asyncAfter(deadline: delayTime) {
@@ -283,26 +278,28 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
     self.comicTableView.scrollToRow(at: indexPath, at: .middle, animated: false)
   }
 
-  func showWebViewer(withUrl: URL?) {
-//    guard let withUrl = withUrl else {
-//      // don't present a web viewer if we don't have a URL.
-//      // this would cause a crash, and it wouldn't make sense anyway.
-//      return
-//    }
-//
-//    self.url = withUrl
-//    self.performSegue(withIdentifier: "ShowWebViewer", sender: self)
-  }
-
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let webViewer = segue.destination as? UVFullScreenWebViewer, let url = self.url {
-      webViewer.url = url
-      self.url = nil
+    guard let identifier = segue.identifier else {
+      return
     }
-  }
 
-  func fullScreenViewer(_ viewer: UVFullScreenViewer, didRequestUrl url: URL) {
-    self.showWebViewer(withUrl: url)
+    switch identifier {
+    case "ShowWebViewer":
+      if let webViewer = segue.destination as? UVFullScreenWebViewer, let url = self.url {
+        webViewer.url = url
+        self.url = nil
+      }
+
+    case "ShowFullScreenComicViewer":
+      if let comicViewer = segue.destination as? UVFullScreenViewer, let index = self.selectedComicIndex {
+        comicViewer.delegate = self
+        comicViewer.currentPage = index
+      }
+      self.selectedComicIndex = nil
+
+    default:
+      ()
+    }
   }
 
   // MARK: - UVComicSharing
