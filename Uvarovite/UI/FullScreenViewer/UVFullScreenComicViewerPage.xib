@@ -19,19 +19,19 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comic Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-kQ-ewp">
-                            <rect key="frame" x="8" y="0.0" width="329" height="50"/>
+                            <rect key="frame" x="8" y="0.0" width="325" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWU-R6-ooa">
-                            <rect key="frame" x="341" y="10" width="30" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWU-R6-ooa">
+                            <rect key="frame" x="337" y="10" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="3Sc-e2-mAe"/>
                                 <constraint firstAttribute="width" constant="30" id="isk-yB-C1x"/>
                             </constraints>
-                            <state key="normal" title="X">
+                            <state key="normal" image="close-100.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -42,7 +42,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="oXc-kQ-ewp" firstAttribute="leading" secondItem="bvf-yH-PhW" secondAttribute="leading" constant="8" id="6u2-g1-W3R"/>
-                        <constraint firstAttribute="trailing" secondItem="rWU-R6-ooa" secondAttribute="trailing" constant="4" id="A7Q-xQ-HGM"/>
+                        <constraint firstAttribute="trailing" secondItem="rWU-R6-ooa" secondAttribute="trailing" constant="8" id="A7Q-xQ-HGM"/>
                         <constraint firstItem="rWU-R6-ooa" firstAttribute="centerY" secondItem="bvf-yH-PhW" secondAttribute="centerY" id="DwP-DC-1JS"/>
                         <constraint firstItem="rWU-R6-ooa" firstAttribute="leading" secondItem="oXc-kQ-ewp" secondAttribute="trailing" constant="4" id="ige-tX-JWn"/>
                         <constraint firstAttribute="bottom" secondItem="oXc-kQ-ewp" secondAttribute="bottom" id="mkD-DR-dR4"/>
@@ -169,6 +169,7 @@
     </objects>
     <resources>
         <image name="alt-100.png" width="100" height="100"/>
+        <image name="close-100.png" width="100" height="100"/>
         <image name="explain-100.png" width="100" height="100"/>
         <image name="next-100.png" width="100" height="100"/>
         <image name="prev-100.png" width="100" height="100"/>

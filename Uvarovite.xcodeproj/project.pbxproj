@@ -23,6 +23,9 @@
 		FD2C653E1F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
 		FD2C653F1F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
 		FD2C65401F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
+		FD4BCF8D1FB6573F00751E1D /* close-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4BCF8C1FB6573F00751E1D /* close-100.png */; };
+		FD4BCF8E1FB6573F00751E1D /* close-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4BCF8C1FB6573F00751E1D /* close-100.png */; };
+		FD4BCF8F1FB6573F00751E1D /* close-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4BCF8C1FB6573F00751E1D /* close-100.png */; };
 		FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
 		FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */; };
@@ -123,6 +126,7 @@
 		FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewNoFavoritesCell.swift; sourceTree = "<group>"; };
 		FD2C65391F9D92B20037BA0C /* star-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-50.png"; sourceTree = "<group>"; };
 		FD2C653A1F9D92B30037BA0C /* star-filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-filled-50.png"; sourceTree = "<group>"; };
+		FD4BCF8C1FB6573F00751E1D /* close-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-100.png"; sourceTree = "<group>"; };
 		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
 		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
 		FD8E8C661FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVFullScreenWebViewer.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				FD9F12A81FB2CAFE000ECBAF /* alt-100.png */,
+				FD4BCF8C1FB6573F00751E1D /* close-100.png */,
 				FDBF897A1FB3BE8000E75AB3 /* down-100.png */,
 				FD9F12AC1FB2CB90000ECBAF /* explain-100.png */,
 				FD9F12B41FB2CC59000ECBAF /* next-100.png */,
@@ -424,6 +429,7 @@
 				FD9F12AD1FB2CB90000ECBAF /* explain-100.png in Resources */,
 				FD2C653E1F9D92B40037BA0C /* star-filled-50.png in Resources */,
 				FD2C4DF11F884FB800CE9203 /* placeholder-359x175.png in Resources */,
+				FD4BCF8D1FB6573F00751E1D /* close-100.png in Resources */,
 				FD9F12B11FB2CC0D000ECBAF /* star-filled-100.png in Resources */,
 				FD9A240C1F80437500BA1038 /* LaunchScreen.storyboard in Resources */,
 				FDBFC69C1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib in Resources */,
@@ -449,6 +455,7 @@
 				FDD302311F91749700519C29 /* chevron-up-50.png in Resources */,
 				FD9F12AE1FB2CB90000ECBAF /* explain-100.png in Resources */,
 				FD2C653C1F9D92B40037BA0C /* star-50.png in Resources */,
+				FD4BCF8E1FB6573F00751E1D /* close-100.png in Resources */,
 				FD9F12B71FB2CC59000ECBAF /* next-100.png in Resources */,
 				FD9F12A61FB2CAD3000ECBAF /* star-100.png in Resources */,
 				FD2C653F1F9D92B40037BA0C /* star-filled-50.png in Resources */,
@@ -469,6 +476,7 @@
 				FDD302321F91749700519C29 /* chevron-up-50.png in Resources */,
 				FD9F12AF1FB2CB90000ECBAF /* explain-100.png in Resources */,
 				FD2C653D1F9D92B40037BA0C /* star-50.png in Resources */,
+				FD4BCF8F1FB6573F00751E1D /* close-100.png in Resources */,
 				FD9F12B81FB2CC59000ECBAF /* next-100.png in Resources */,
 				FD9F12A71FB2CAD3000ECBAF /* star-100.png in Resources */,
 				FD2C65401F9D92B40037BA0C /* star-filled-50.png in Resources */,

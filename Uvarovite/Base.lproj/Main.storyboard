@@ -549,7 +549,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXg-Gy-v44" userLabel="WebViewTitle">
-                                        <rect key="frame" x="44" y="7.5" width="287" height="30"/>
+                                        <rect key="frame" x="47" y="7.5" width="284" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -561,7 +561,7 @@
                                     <constraint firstAttribute="bottom" secondItem="toM-Vl-7XZ" secondAttribute="bottom" id="Fg8-0g-7za"/>
                                     <constraint firstAttribute="height" constant="44" id="NM8-h0-bUZ"/>
                                     <constraint firstItem="vNq-mF-Fih" firstAttribute="centerY" secondItem="KTG-sW-yaW" secondAttribute="centerY" id="QUL-xC-MXp"/>
-                                    <constraint firstItem="bXg-Gy-v44" firstAttribute="leading" secondItem="vNq-mF-Fih" secondAttribute="trailing" constant="7" id="gUa-rk-pYg"/>
+                                    <constraint firstItem="bXg-Gy-v44" firstAttribute="leading" secondItem="vNq-mF-Fih" secondAttribute="trailing" constant="10" id="gUa-rk-pYg"/>
                                     <constraint firstItem="bXg-Gy-v44" firstAttribute="centerY" secondItem="KTG-sW-yaW" secondAttribute="centerY" id="gsD-Nt-NYV"/>
                                     <constraint firstAttribute="trailing" secondItem="bXg-Gy-v44" secondAttribute="trailing" constant="44" id="h9Q-oD-tkE"/>
                                     <constraint firstItem="toM-Vl-7XZ" firstAttribute="leading" secondItem="KTG-sW-yaW" secondAttribute="leading" id="rv1-Oj-Dha"/>
