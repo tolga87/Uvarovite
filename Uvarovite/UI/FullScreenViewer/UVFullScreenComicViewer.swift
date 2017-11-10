@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol UVFullScreenComicViewerDelegate {
-  func fullScreenViewer(_ viewer: UVFullScreenComicViewer, didScrollToPage page: Int)
+  func fullScreenComicViewer(_ viewer: UVFullScreenComicViewer, didScrollToPage page: Int)
 }
 
 
@@ -30,7 +30,7 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
     let page = Int(offset / scrollView.frame.width)
     if (page != currentPage) {
       currentPage = page
-      self.delegate?.fullScreenViewer(self, didScrollToPage: currentPage)
+      self.delegate?.fullScreenComicViewer(self, didScrollToPage: currentPage)
     }
   }
 

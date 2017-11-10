@@ -268,7 +268,7 @@ class UVRootViewController: UIViewController, UITableViewDataSource, UITableView
 
   // MARK: - UVFullScreenComicViewerDelegate
 
-  func fullScreenViewer(_ viewer: UVFullScreenComicViewer, didScrollToPage page: Int) {
+  func fullScreenComicViewer(_ viewer: UVFullScreenComicViewer, didScrollToPage page: Int) {
     if page >= self.comicManager.numComics() {
       // TODO: process error
       return

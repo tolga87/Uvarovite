@@ -40,7 +40,7 @@ class UVFullScreenComicViewerPage : UIView {
 
 
   class func instanceFromNib() -> UVFullScreenComicViewerPage {
-    let view = UINib(nibName: "UVFullScreenViewerPage", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UVFullScreenComicViewerPage
+    let view = UINib(nibName: "UVFullScreenComicViewerPage", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UVFullScreenComicViewerPage
     view.imageView.contentMode = .scaleAspectFit
     view.footerView.backgroundColor = .darkBlue
     view.altTextLabel = UVComicPresenter.altTextLabel()
