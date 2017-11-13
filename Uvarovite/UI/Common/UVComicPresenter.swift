@@ -7,14 +7,14 @@ class UVComicPresenter {
 
     let comicIdString = NSAttributedString.init(string: "#\(comicId)  ",
       attributes: [
-        .font : UIFont.systemFont(ofSize: 14),
+        .font : UIFont.xkcdFont(withSize: 14.0),
         .foregroundColor : UIColor.lightGray,
         ])
     attributedString.append(comicIdString)
 
     let titleString = NSAttributedString.init(string: title ?? "",
                                               attributes: [
-                                                .font : UIFont.systemFont(ofSize: 20),
+                                                .font : UIFont.xkcdFont(withSize: 20.0),
                                                 .foregroundColor : UIColor.white,
                                                 ])
     attributedString.append(titleString)
@@ -25,7 +25,7 @@ class UVComicPresenter {
     if let date = date {
       let dateString = NSAttributedString.init(string: "\n\(dateFormatter.string(from: date))",
         attributes: [
-          .font : UIFont.systemFont(ofSize: 14),
+          .font : UIFont.xkcdFont(withSize: 14.0),
           .foregroundColor : UIColor.lightGray,
           ])
       attributedString.append(dateString)
@@ -43,7 +43,7 @@ class UVComicPresenter {
     let attrString = NSMutableAttributedString(string: string)
     let entireString = string as NSString
     let comicIdString = "#\(comic.id)"
-    attrString.addAttributes([.font : UIFont.systemFont(ofSize: 14),
+    attrString.addAttributes([.font : UIFont.xkcdFont(withSize: 14.0),
                               .foregroundColor : UIColor.lightGray,
                               ],
                              range: entireString.range(of: comicIdString))

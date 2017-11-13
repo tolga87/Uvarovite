@@ -100,6 +100,12 @@
 		FDD302351F9177B100519C29 /* more-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD302331F9177B100519C29 /* more-50.png */; };
 		FDD302361F9177B100519C29 /* more-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FDD302331F9177B100519C29 /* more-50.png */; };
 		FDEDEB091F9856E900DF3F7A /* image-na-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEDEB081F9856E900DF3F7A /* image-na-icon.png */; };
+		FDF484AC1FB65C2100BCCD54 /* xkcd-script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDF484AB1FB65C2100BCCD54 /* xkcd-script.ttf */; };
+		FDF484AD1FB65C2100BCCD54 /* xkcd-script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDF484AB1FB65C2100BCCD54 /* xkcd-script.ttf */; };
+		FDF484AE1FB65C2100BCCD54 /* xkcd-script.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDF484AB1FB65C2100BCCD54 /* xkcd-script.ttf */; };
+		FDF484B01FB65DA900BCCD54 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF484AF1FB65DA900BCCD54 /* UIFont+CustomFonts.swift */; };
+		FDF484B11FB65DA900BCCD54 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF484AF1FB65DA900BCCD54 /* UIFont+CustomFonts.swift */; };
+		FDF484B21FB65DA900BCCD54 /* UIFont+CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF484AF1FB65DA900BCCD54 /* UIFont+CustomFonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +169,8 @@
 		FDD3022F1F91749700519C29 /* chevron-up-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-up-50.png"; sourceTree = "<group>"; };
 		FDD302331F9177B100519C29 /* more-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-50.png"; sourceTree = "<group>"; };
 		FDEDEB081F9856E900DF3F7A /* image-na-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image-na-icon.png"; sourceTree = "<group>"; };
+		FDF484AB1FB65C2100BCCD54 /* xkcd-script.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "xkcd-script.ttf"; sourceTree = "<group>"; };
+		FDF484AF1FB65DA900BCCD54 /* UIFont+CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CustomFonts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +216,7 @@
 				FDD302331F9177B100519C29 /* more-50.png */,
 				FDD3022F1F91749700519C29 /* chevron-up-50.png */,
 				FD2C4DF01F884FB800CE9203 /* placeholder-359x175.png */,
+				FDF484AB1FB65C2100BCCD54 /* xkcd-script.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -231,6 +240,7 @@
 				FD96D9FE1F8AA27100317385 /* UVLabel.swift */,
 				FD2C65311F9D8BF00037BA0C /* UIColor+CustomColors.swift */,
 				FDBFC69F1FB0F9D20035EE68 /* UVComicPresenter.swift */,
+				FDF484AF1FB65DA900BCCD54 /* UIFont+CustomFonts.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -445,6 +455,7 @@
 				FD9F12A91FB2CAFE000ECBAF /* alt-100.png in Resources */,
 				FDD302301F91749700519C29 /* chevron-up-50.png in Resources */,
 				FD9F12B91FB2CC59000ECBAF /* prev-100.png in Resources */,
+				FDF484AC1FB65C2100BCCD54 /* xkcd-script.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +467,7 @@
 				FD9F12AE1FB2CB90000ECBAF /* explain-100.png in Resources */,
 				FD2C653C1F9D92B40037BA0C /* star-50.png in Resources */,
 				FD4BCF8E1FB6573F00751E1D /* close-100.png in Resources */,
+				FDF484AD1FB65C2100BCCD54 /* xkcd-script.ttf in Resources */,
 				FD9F12B71FB2CC59000ECBAF /* next-100.png in Resources */,
 				FD9F12A61FB2CAD3000ECBAF /* star-100.png in Resources */,
 				FD2C653F1F9D92B40037BA0C /* star-filled-50.png in Resources */,
@@ -477,6 +489,7 @@
 				FD9F12AF1FB2CB90000ECBAF /* explain-100.png in Resources */,
 				FD2C653D1F9D92B40037BA0C /* star-50.png in Resources */,
 				FD4BCF8F1FB6573F00751E1D /* close-100.png in Resources */,
+				FDF484AE1FB65C2100BCCD54 /* xkcd-script.ttf in Resources */,
 				FD9F12B81FB2CC59000ECBAF /* next-100.png in Resources */,
 				FD9F12A71FB2CAD3000ECBAF /* star-100.png in Resources */,
 				FD2C65401F9D92B40037BA0C /* star-filled-50.png in Resources */,
@@ -505,6 +518,7 @@
 				FDBFC6931FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
 				FD2C65361F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
+				FDF484B01FB65DA900BCCD54 /* UIFont+CustomFonts.swift in Sources */,
 				FD96D9FF1F8AA27100317385 /* UVLabel.swift in Sources */,
 				FDD3022C1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
 				FDBFC6981FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */,
@@ -528,6 +542,7 @@
 				FD9A24321F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FDF484B11FB65DA900BCCD54 /* UIFont+CustomFonts.swift in Sources */,
 				FD2C65331F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
 				FDADBC801F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */,
 				FDD3022D1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
@@ -550,6 +565,7 @@
 				FD9A24331F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FDF484B21FB65DA900BCCD54 /* UIFont+CustomFonts.swift in Sources */,
 				FD2C65341F9D8BF00037BA0C /* UIColor+CustomColors.swift in Sources */,
 				FDADBC811F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */,
 				FDD3022E1F8FF14300519C29 /* UVSharingManager.swift in Sources */,
