@@ -25,21 +25,21 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
     self.scrollView.delegate = self
   }
 
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let offset = scrollView.contentOffset.x
-    let page = Int(offset / scrollView.frame.width)
-    if (page != currentPage) {
-      currentPage = page
-      self.delegate?.fullScreenComicViewer(self, didScrollToPage: currentPage)
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.addSubview(self.scrollView)
+
+    let numComics = self.comicManager.numComics()
+    for i in 0..<numComics {
+      let page = UVFullScreenComicViewerPage.instanceFromNib()
+      page.delegate = self
+      page.comic = self.comicManager.comicAt(i)
+      pages.append(page)
+      self.scrollView.addSubview(page)
     }
   }
 
-  func setPageOffset(_ page: Int) {
-    // this method does not check the boundaries
-    let offsetX = CGFloat(page) * self.scrollView.frame.width
-    let contentOffset = CGPoint(x: offsetX, y:0)
-    self.scrollView.setContentOffset(contentOffset, animated: false)
-  }
+  // MARK: - Layout
 
   override func viewWillLayoutSubviews() {
     self.scrollView.frame = self.view.bounds
@@ -61,20 +61,38 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
     }
   }
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    self.view.addSubview(self.scrollView)
-
-    let numComics = self.comicManager.numComics()
-    for i in 0..<numComics {
-      let page = UVFullScreenComicViewerPage.instanceFromNib()
-      page.delegate = self
-      page.comic = self.comicManager.comicAt(i)
-      pages.append(page)
-      self.scrollView.addSubview(page)
+  private func pageAtIndex(_ index: Int) -> UVFullScreenComicViewerPage? {
+    if index >= 0 && index < self.pages.count {
+      return self.pages[index]
+    } else {
+      return nil
     }
   }
+
+  func setPageOffset(_ page: Int) {
+    // this method does not check the boundaries
+    let offsetX = CGFloat(page) * self.scrollView.frame.width
+    let contentOffset = CGPoint(x: offsetX, y:0)
+    self.scrollView.setContentOffset(contentOffset, animated: false)
+  }
+
+  // MARK: - UIScrollViewDelegate
+
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let offset = scrollView.contentOffset.x
+    let page = Int(offset / scrollView.frame.width)
+    if (page != currentPage) {
+      currentPage = page
+      self.delegate?.fullScreenComicViewer(self, didScrollToPage: currentPage)
+    }
+  }
+
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    self.pageAtIndex(self.currentPage - 1)?.resetZoom()
+    self.pageAtIndex(self.currentPage + 1)?.resetZoom()
+  }
+
+  // MARK: - UVFullScreenComicDelegate
 
   func fullScreenComicDidTapClose(_ page: UVFullScreenComicViewerPage) {
     self.dismiss(animated: true, completion: nil)
@@ -86,6 +104,7 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
       // delegate methods will not be called when scrollView's contentOffset
       // is set programmatically without animation, so I call it manually here...
       self.scrollViewDidScroll(self.scrollView)
+      self.pageAtIndex(self.currentPage + 1)?.resetZoom()
     }
   }
 
@@ -94,6 +113,7 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
       self.setPageOffset(self.currentPage + 1)
       // ...and here.
       self.scrollViewDidScroll(self.scrollView)
+      self.pageAtIndex(self.currentPage - 1)?.resetZoom()
     }
   }
 
@@ -102,6 +122,8 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
     self.explainComic = comic.comic
     self.performSegue(withIdentifier: "ShowWebViewer", sender: self)
   }
+
+  // MARK: - Segue
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let webViewer = segue.destination as? UVFullScreenWebViewer, let url = self.explainUrl else {

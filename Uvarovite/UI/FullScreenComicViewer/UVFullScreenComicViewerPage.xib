@@ -55,23 +55,34 @@
                         <constraint firstItem="oXc-kQ-ewp" firstAttribute="top" secondItem="bvf-yH-PhW" secondAttribute="top" id="pij-GE-aEI"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmH-Pq-YAD" userLabel="ComicContainerView">
-                    <rect key="frame" x="0.0" y="193.5" width="375" height="300"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmH-Pq-YAD" userLabel="ComicScrollView" customClass="UIScrollView">
+                    <rect key="frame" x="0.0" y="78" width="375" height="531"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MHm-YQ-8V9">
-                            <rect key="frame" x="67" y="85.5" width="240" height="128"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03x-jr-0E0" userLabel="ContentView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="531"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MHm-YQ-8V9">
+                                    <rect key="frame" x="67.5" y="201.5" width="240" height="128"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="128" id="9r0-ah-mxC"/>
+                                        <constraint firstAttribute="width" constant="240" id="hOG-w5-cXx"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="128" id="9r0-ah-mxC"/>
-                                <constraint firstAttribute="width" constant="240" id="hOG-w5-cXx"/>
+                                <constraint firstItem="MHm-YQ-8V9" firstAttribute="centerX" secondItem="03x-jr-0E0" secondAttribute="centerX" id="bzZ-xk-COQ"/>
+                                <constraint firstItem="MHm-YQ-8V9" firstAttribute="centerY" secondItem="03x-jr-0E0" secondAttribute="centerY" id="rQL-w1-Uzv"/>
                             </constraints>
-                        </imageView>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="MHm-YQ-8V9" firstAttribute="centerY" secondItem="mmH-Pq-YAD" secondAttribute="centerY" id="APy-sJ-gTg"/>
-                        <constraint firstAttribute="height" constant="300" id="GDH-Fg-X9s"/>
-                        <constraint firstItem="MHm-YQ-8V9" firstAttribute="centerX" secondItem="mmH-Pq-YAD" secondAttribute="centerX" id="YKs-gW-jOo"/>
+                        <constraint firstItem="03x-jr-0E0" firstAttribute="height" secondItem="mmH-Pq-YAD" secondAttribute="height" id="GTl-sb-aNZ"/>
+                        <constraint firstItem="03x-jr-0E0" firstAttribute="centerY" secondItem="mmH-Pq-YAD" secondAttribute="centerY" id="Z4H-9h-KFW"/>
+                        <constraint firstItem="03x-jr-0E0" firstAttribute="centerX" secondItem="mmH-Pq-YAD" secondAttribute="centerX" id="bhz-LE-gm2"/>
+                        <constraint firstItem="03x-jr-0E0" firstAttribute="width" secondItem="mmH-Pq-YAD" secondAttribute="width" id="pQg-sI-Fc9"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WpE-ml-AB9" userLabel="FooterView">
@@ -147,16 +158,20 @@
                 <constraint firstItem="WpE-ml-AB9" firstAttribute="width" secondItem="vUN-kp-3ea" secondAttribute="width" id="14d-T0-mvY"/>
                 <constraint firstItem="bvf-yH-PhW" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2KK-K6-HMK"/>
                 <constraint firstItem="bvf-yH-PhW" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="4uf-Tw-TcF"/>
+                <constraint firstItem="mmH-Pq-YAD" firstAttribute="top" secondItem="bvf-yH-PhW" secondAttribute="bottom" constant="8" id="ICc-LA-AbM"/>
                 <constraint firstItem="WpE-ml-AB9" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="XvW-U4-ghc"/>
                 <constraint firstItem="mmH-Pq-YAD" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="iFR-ws-Y07"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="bvf-yH-PhW" secondAttribute="top" id="s9c-CG-iu3"/>
                 <constraint firstItem="mmH-Pq-YAD" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="te3-Fa-GHv"/>
                 <constraint firstItem="mmH-Pq-YAD" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="tgW-5b-6KV"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WpE-ml-AB9" secondAttribute="bottom" id="wME-4q-4pD"/>
+                <constraint firstItem="WpE-ml-AB9" firstAttribute="top" secondItem="mmH-Pq-YAD" secondAttribute="bottom" constant="8" id="z5u-mQ-a8H"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="altTextButton" destination="uLe-0H-kzh" id="0Zj-6P-XFS"/>
+                <outlet property="comicScrollView" destination="mmH-Pq-YAD" id="FAp-nM-PlW"/>
+                <outlet property="comicScrollViewContentView" destination="03x-jr-0E0" id="tde-3V-bgw"/>
                 <outlet property="explainButton" destination="jrV-v1-dok" id="kEd-xR-PqF"/>
                 <outlet property="favoriteButton" destination="PAg-qv-akc" id="xlC-Ng-MF4"/>
                 <outlet property="footerView" destination="WpE-ml-AB9" id="BdY-wh-hdV"/>

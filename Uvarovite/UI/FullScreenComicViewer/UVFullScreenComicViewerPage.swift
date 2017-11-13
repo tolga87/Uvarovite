@@ -8,7 +8,9 @@ protocol UVFullScreenComicDelegate {
   func fullScreenComic(_ comic: UVFullScreenComicViewerPage, didRequestUrl url: URL)
 }
 
-class UVFullScreenComicViewerPage : UIView {
+// ##############################################################################################
+
+class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
   var comic: UVComic? {
     didSet {
       self.imageView.image = comic?.image
@@ -23,6 +25,8 @@ class UVFullScreenComicViewerPage : UIView {
 
   @IBOutlet var headerView: UIView!
   @IBOutlet var titleLabel: UILabel!
+  @IBOutlet var comicScrollView: UIScrollView!
+  @IBOutlet var comicScrollViewContentView: UIView!
 
   @IBOutlet var imageView: UIImageView!
   @IBOutlet var imageViewWidthConstraint: NSLayoutConstraint!
@@ -41,20 +45,31 @@ class UVFullScreenComicViewerPage : UIView {
 
   class func instanceFromNib() -> UVFullScreenComicViewerPage {
     let view = UINib(nibName: "UVFullScreenComicViewerPage", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UVFullScreenComicViewerPage
-    view.imageView.contentMode = .scaleAspectFit
-    view.footerView.backgroundColor = .darkBlue
-    view.altTextLabel = UVComicPresenter.altTextLabel()
-    view.altTextLabel.alpha = 0
-    view.addSubview(view.altTextLabel)
+    view.setupView()
+    return view
+  }
+
+  func setupView() {
+    self.imageView.contentMode = .scaleAspectFit
+    self.footerView.backgroundColor = .darkBlue
+    self.altTextLabel = UVComicPresenter.altTextLabel()
+    self.altTextLabel.alpha = 0
+    self.addSubview(self.altTextLabel)
+
+    self.comicScrollView.delegate = self
+    self.comicScrollView.minimumZoomScale = 1
+    self.comicScrollView.maximumZoomScale = 2
+    self.comicScrollView.bouncesZoom = true
+    self.comicScrollView.showsHorizontalScrollIndicator = false
+    self.comicScrollView.showsVerticalScrollIndicator = false
     NotificationCenter.default.addObserver(forName: UVFavoritesManager.favoritesUpdatedNotification,
                                            object: nil,
                                            queue: OperationQueue.main) { (notification: Notification) in
-                                            view.updateFavoriteStatus()
+                                            self.updateFavoriteStatus()
     }
-
-
-    return view
   }
+
+  // MARK: - Buttons
 
   @IBAction func didTapPrev(sender: UIButton) {
     self.delegate?.fullScreenComicDidTapPrev(self)
@@ -96,6 +111,25 @@ class UVFullScreenComicViewerPage : UIView {
     let urlString = "http://www.explainxkcd.com/wiki/index.php/\(comicId)"
     let url = URL(string: urlString)!
     self.delegate?.fullScreenComic(self, didRequestUrl: url)
+  }
+
+  @IBAction func didTapClose(sender: UIButton) {
+    self.delegate?.fullScreenComicDidTapClose(self)
+  }
+
+  // MARK: - Layout
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    self.updateImageSize()
+    self.layoutAltTextLabel()
+    self.layoutFooterButtons()
+
+    self.comicScrollView.contentSize = self.comicScrollViewContentView.frame.size
+  }
+
+  func resetZoom() {
+    self.comicScrollView.setZoomScale(1, animated: true)
   }
 
   // TODO: eliminate redundancy
@@ -217,14 +251,18 @@ class UVFullScreenComicViewerPage : UIView {
     }
   }
 
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    self.updateImageSize()
-    self.layoutAltTextLabel()
-    self.layoutFooterButtons()
+  // MARK: - UIScrollViewDelegate
+
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return self.imageView
   }
 
-  @IBAction func didTapClose(sender: UIButton) {
-    self.delegate?.fullScreenComicDidTapClose(self)
+  // this makes sure the zoomed-in image is centered nicely within the scrollView.
+  // taken from: https://stackoverflow.com/questions/1316451/center-content-of-uiscrollview-when-smaller
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    let offsetX: CGFloat = max((scrollView.bounds.width - scrollView.contentSize.width) / 2.0, 0.0)
+    let offsetY: CGFloat = max((scrollView.bounds.height - scrollView.contentSize.height) / 2.0, 0.0)
+    self.imageView.center = CGPoint(x: scrollView.contentSize.width / 2.0 + offsetX,
+                                    y: scrollView.contentSize.height / 2.0 + offsetY)
   }
 }
