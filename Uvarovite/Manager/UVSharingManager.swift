@@ -52,7 +52,7 @@ class UVShareActivityItemSource : NSObject, UIActivityItemSource {
                               suggestedSize size: CGSize) -> UIImage? {
     func resizeImage(_ image: UIImage, toSize newSize: CGSize) -> UIImage {
       // retrieved from https://stackoverflow.com/questions/2658738/the-simplest-way-to-resize-an-uiimage
-      UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+      UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
       image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
       let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
       UIGraphicsEndImageContext()
@@ -89,7 +89,7 @@ class UVSharingManager {
       UIActivityType.postToWeibo,
       UIActivityType.postToTencentWeibo,
     ]
-    activityVC.excludedActivityTypes = excludedActivities;
+    activityVC.excludedActivityTypes = excludedActivities
     return activityVC
   }
 }

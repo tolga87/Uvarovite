@@ -3,6 +3,7 @@ import UIKit
 
 protocol UVFullScreenComicDelegate {
   func fullScreenComicDidTapClose(_ page: UVFullScreenComicViewerPage)
+  func fullScreenComicDidDismiss(_ page: UVFullScreenComicViewerPage)
   func fullScreenComicDidTapPrev(_ page: UVFullScreenComicViewerPage)
   func fullScreenComicDidTapNext(_ page: UVFullScreenComicViewerPage)
   func fullScreenComic(_ comic: UVFullScreenComicViewerPage, didRequestUrl url: URL)
@@ -10,7 +11,8 @@ protocol UVFullScreenComicDelegate {
 
 // ##############################################################################################
 
-class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
+class UVFullScreenComicViewerPage : UIView,
+                                    UIScrollViewDelegate, UVVerticalPanControllerDelegate, UIGestureRecognizerDelegate {
   var comic: UVComic? {
     didSet {
       self.imageView.image = comic?.image
@@ -21,6 +23,7 @@ class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
   }
 
   var delegate: UVFullScreenComicDelegate?
+  weak var comicViewer: UVFullScreenComicViewer?
   let comicImageHorizontalPadding = CGFloat(5)
 
   @IBOutlet var headerView: UIView!
@@ -42,6 +45,11 @@ class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
   @IBOutlet var explainButton: UIButton!
   @IBOutlet var nextButton: UIButton!
 
+  var verticalPanController: UVVerticalPanController?
+
+  // TODO: move these elsewhere
+  var overlayView: UIView?
+  var imageViewCopy: UIImageView?
 
   class func instanceFromNib() -> UVFullScreenComicViewerPage {
     let view = UINib(nibName: "UVFullScreenComicViewerPage", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UVFullScreenComicViewerPage
@@ -50,6 +58,7 @@ class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
   }
 
   func setupView() {
+    self.imageView.isUserInteractionEnabled = true  // necessary for the pan gesture recognizer
     self.imageView.contentMode = .scaleAspectFit
     self.footerView.backgroundColor = .darkBlue
     self.altTextLabel = UVComicPresenter.altTextLabel()
@@ -62,6 +71,7 @@ class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
     self.comicScrollView.bouncesZoom = true
     self.comicScrollView.showsHorizontalScrollIndicator = false
     self.comicScrollView.showsVerticalScrollIndicator = false
+
     NotificationCenter.default.addObserver(forName: UVFavoritesManager.favoritesUpdatedNotification,
                                            object: nil,
                                            queue: OperationQueue.main) { (notification: Notification) in
@@ -126,6 +136,58 @@ class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
     self.layoutFooterButtons()
 
     self.comicScrollView.contentSize = self.comicScrollViewContentView.frame.size
+
+    // TODO: move this somewhere that makes more sense.
+    if self.verticalPanController == nil {
+      self.verticalPanController = UVVerticalPanController(containerView: self,
+                                                                                imageView: self.imageView)
+      self.verticalPanController?.delegate = self
+      self.verticalPanController?.panRecognizer.delegate = self
+      self.verticalPanController?.animationDuration = 0.3
+    }
+  }
+
+  // MARK: - UVVerticalPanControllerDelegate
+
+  func verticalPanControllerDidBeginPanning(_ controller: UVVerticalPanController) {
+    self.comicViewer?.setScrollEnabled(false)
+  }
+
+  func verticalPanControllerDidDismiss(_ controller: UVVerticalPanController) {
+    self.verticalPanController = nil
+    self.delegate?.fullScreenComicDidDismiss(self)
+  }
+
+  func verticalPanControllerDidBounceBack(_ controller: UVVerticalPanController) {
+    self.comicViewer?.setScrollEnabled(true)
+  }
+
+  // MARK: - UIGestureRecognizerDelegate
+
+  override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    if self.comicScrollView.zoomScale != 1.0 {
+      return false
+    }
+    return true
+  }
+
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
+  }
+
+  // MARK: - UIScrollViewDelegate
+
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return self.imageView
+  }
+
+  // this makes sure the zoomed-in image is centered nicely within the scrollView.
+  // taken from: https://stackoverflow.com/questions/1316451/center-content-of-uiscrollview-when-smaller
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    let offsetX: CGFloat = max((scrollView.bounds.width - scrollView.contentSize.width) / 2.0, 0.0)
+    let offsetY: CGFloat = max((scrollView.bounds.height - scrollView.contentSize.height) / 2.0, 0.0)
+    self.imageView.center = CGPoint(x: scrollView.contentSize.width / 2.0 + offsetX,
+                                    y: scrollView.contentSize.height / 2.0 + offsetY)
   }
 
   func resetZoom() {
@@ -249,20 +311,5 @@ class UVFullScreenComicViewerPage : UIView, UIScrollViewDelegate {
       centerButton.frame = frame
       centerButtonX += (frame.width + horizontalPadding)
     }
-  }
-
-  // MARK: - UIScrollViewDelegate
-
-  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-    return self.imageView
-  }
-
-  // this makes sure the zoomed-in image is centered nicely within the scrollView.
-  // taken from: https://stackoverflow.com/questions/1316451/center-content-of-uiscrollview-when-smaller
-  func scrollViewDidZoom(_ scrollView: UIScrollView) {
-    let offsetX: CGFloat = max((scrollView.bounds.width - scrollView.contentSize.width) / 2.0, 0.0)
-    let offsetY: CGFloat = max((scrollView.bounds.height - scrollView.contentSize.height) / 2.0, 0.0)
-    self.imageView.center = CGPoint(x: scrollView.contentSize.width / 2.0 + offsetX,
-                                    y: scrollView.contentSize.height / 2.0 + offsetY)
   }
 }

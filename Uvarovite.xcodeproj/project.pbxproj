@@ -23,6 +23,9 @@
 		FD2C653E1F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
 		FD2C653F1F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
 		FD2C65401F9D92B40037BA0C /* star-filled-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FD2C653A1F9D92B30037BA0C /* star-filled-50.png */; };
+		FD37141C1FBCC5C90077123D /* UVVerticalPanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37141B1FBCC5C90077123D /* UVVerticalPanController.swift */; };
+		FD37141D1FBCC5C90077123D /* UVVerticalPanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37141B1FBCC5C90077123D /* UVVerticalPanController.swift */; };
+		FD37141E1FBCC5C90077123D /* UVVerticalPanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD37141B1FBCC5C90077123D /* UVVerticalPanController.swift */; };
 		FD4BCF8D1FB6573F00751E1D /* close-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4BCF8C1FB6573F00751E1D /* close-100.png */; };
 		FD4BCF8E1FB6573F00751E1D /* close-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4BCF8C1FB6573F00751E1D /* close-100.png */; };
 		FD4BCF8F1FB6573F00751E1D /* close-100.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4BCF8C1FB6573F00751E1D /* close-100.png */; };
@@ -132,6 +135,7 @@
 		FD2C65351F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewNoFavoritesCell.swift; sourceTree = "<group>"; };
 		FD2C65391F9D92B20037BA0C /* star-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-50.png"; sourceTree = "<group>"; };
 		FD2C653A1F9D92B30037BA0C /* star-filled-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-filled-50.png"; sourceTree = "<group>"; };
+		FD37141B1FBCC5C90077123D /* UVVerticalPanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVVerticalPanController.swift; sourceTree = "<group>"; };
 		FD4BCF8C1FB6573F00751E1D /* close-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-100.png"; sourceTree = "<group>"; };
 		FD5CC67D1F8082E2006F4A27 /* UVComicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableView.swift; sourceTree = "<group>"; };
 		FD5CC6811F80856F006F4A27 /* UVComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UVComicTableViewCell.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				FDBFC6921FB0DC500035EE68 /* UVFullScreenComicViewer.swift */,
 				FDBFC6971FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift */,
 				FDBFC69B1FB0E3D80035EE68 /* UVFullScreenComicViewerPage.xib */,
+				FD37141B1FBCC5C90077123D /* UVVerticalPanController.swift */,
 			);
 			path = FullScreenComicViewer;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				FDADBC7F1F9EE831001F5D9E /* UVFavoritesManager.swift in Sources */,
 				FD9A24351F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67E1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
+				FD37141C1FBCC5C90077123D /* UVVerticalPanController.swift in Sources */,
 				FD8E8C671FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
 				FDBFC6931FB0DC500035EE68 /* UVFullScreenComicViewer.swift in Sources */,
 				FD5CC6821F80856F006F4A27 /* UVComicTableViewCell.swift in Sources */,
@@ -539,6 +545,7 @@
 				FD8E8C681FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
 				FDBFC6991FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */,
 				FD2C65371F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
+				FD37141D1FBCC5C90077123D /* UVVerticalPanController.swift in Sources */,
 				FD9A24321F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24361F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC67F1F8082E2006F4A27 /* UVComicTableView.swift in Sources */,
@@ -562,6 +569,7 @@
 				FD8E8C691FB388DF00E4ECC6 /* UVFullScreenWebViewer.swift in Sources */,
 				FDBFC69A1FB0E3370035EE68 /* UVFullScreenComicViewerPage.swift in Sources */,
 				FD2C65381F9D8EE40037BA0C /* UVComicTableViewNoFavoritesCell.swift in Sources */,
+				FD37141E1FBCC5C90077123D /* UVVerticalPanController.swift in Sources */,
 				FD9A24331F80448B00BA1038 /* UVComic.swift in Sources */,
 				FD9A24371F8046E300BA1038 /* UVComicManager.swift in Sources */,
 				FD5CC6801F8082E2006F4A27 /* UVComicTableView.swift in Sources */,

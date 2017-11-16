@@ -33,6 +33,7 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
     for i in 0..<numComics {
       let page = UVFullScreenComicViewerPage.instanceFromNib()
       page.delegate = self
+      page.comicViewer = self
       page.comic = self.comicManager.comicAt(i)
       pages.append(page)
       self.scrollView.addSubview(page)
@@ -69,6 +70,10 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
     }
   }
 
+  func setScrollEnabled(_ enabled: Bool) {
+    self.scrollView.isScrollEnabled = enabled
+  }
+
   func setPageOffset(_ page: Int) {
     // this method does not check the boundaries
     let offsetX = CGFloat(page) * self.scrollView.frame.width
@@ -96,6 +101,15 @@ class UVFullScreenComicViewer : UIViewController, UVFullScreenComicDelegate, UIS
 
   func fullScreenComicDidTapClose(_ page: UVFullScreenComicViewerPage) {
     self.dismiss(animated: true, completion: nil)
+  }
+
+  func fullScreenComicDidDismiss(_ page: UVFullScreenComicViewerPage) {
+    UIView.animate(withDuration: 0.3,
+                   animations: {
+                    self.view.alpha = 0
+    }) { (finished: Bool) in
+      self.dismiss(animated: false, completion: nil)
+    }
   }
 
   func fullScreenComicDidTapPrev(_ page: UVFullScreenComicViewerPage) {

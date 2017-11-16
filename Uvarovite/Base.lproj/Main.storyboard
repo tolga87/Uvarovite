@@ -503,7 +503,7 @@
                         <outlet property="headerView" destination="bnD-sD-Onm" id="ghJ-t5-PdH"/>
                         <outlet property="loadMoreLabel" destination="Std-V9-bv2" id="81z-dS-sv0"/>
                         <outlet property="scrollView" destination="Cim-lO-wrM" id="KsN-yg-WS9"/>
-                        <segue destination="cXt-cZ-b0E" kind="show" identifier="ShowFullScreenComicViewer" id="L8U-tY-qS7"/>
+                        <segue destination="cXt-cZ-b0E" kind="presentation" identifier="ShowFullScreenComicViewer" modalPresentationStyle="overCurrentContext" id="L8U-tY-qS7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
